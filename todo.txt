@@ -1,0 +1,8 @@
+Add:
+
+- Hole Breakdown w/ Handicap
+- Test Handicap Calculation
+- More Views (One Golfer, All YTD Stats, Recent Rounds)
+- Tune test data
+- Deploy with Postgresql and South
+- 

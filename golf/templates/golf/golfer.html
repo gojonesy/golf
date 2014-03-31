@@ -1,0 +1,32 @@
+{% extends 'golf/base.html' %}
+
+{% block body_block %}
+        <div class="hero-unit">
+            <h1>Bell Monday Night Men's Golf League - 2014</h1>
+            <div class="row-fluid">
+                <div class="span12">
+                {% if golfer %}
+                <h2>{{ golfer }}</h2>
+                <ul>
+                    <li>Email: {{ golfer.email }}</li>
+                    <li>Phone: {{ golfer.phone }}</li>
+                    <li>Alt Phone: {{ golfer.phone_alt }}</li>
+                    <li>Average Score: {{ avg_score }}</li>
+                    <li>Number of Rounds: {{ num_rds }}</li>
+                    <li>Total Points: {{ points }} </li>
+                    <li>Pars: {{ holes.0 }}</li>
+                    <li>Birdies: {{ holes.1 }}</li>
+                    <li>Eagles: {{ holes.2 }}</li>
+                    <li>Bogies: {{ holes.3 }}</li>
+                    <li>Other: {{ holes.4 }}</li>
+                    <li>Handicap: {{ handicap }}</li>
+                </ul>
+                {% else %}
+                    Golfer not found.
+                {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

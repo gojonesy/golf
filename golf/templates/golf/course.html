@@ -1,0 +1,31 @@
+{% extends 'golf/base.html' %}
+
+{% block body_block %}
+        {% if course %}
+            <h1>{{ course }}</h1>
+            <ul>
+                <li>Rating: {{ course.rating }}</li>
+                <li>Slope: {{ course.slope }}</li>
+                <li>Par: {{ course.totalpar }}</li>
+                <li>Modified: {{ course.mod_date }}</li>
+            </ul>
+            <table>
+                <th>Hole:</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                <tr>
+                    <td>Par:</td>
+                    <td>{{ course.hole1par }}</td>
+                    <td>{{ course.hole2par }}</td>
+                    <td>{{ course.hole3par }}</td>
+                    <td>{{ course.hole4par }}</td>
+                    <td>{{ course.hole5par }}</td>
+                    <td>{{ course.hole6par }}</td>
+                    <td>{{ course.hole7par }}</td>
+                    <td>{{ course.hole8par }}</td>
+                    <td>{{ course.hole9par }}</td>
+                </tr>
+            </table>
+        {% else %}
+            Course not found.
+        {% endif %}
+
+{% endblock %}

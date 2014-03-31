@@ -1,0 +1,26 @@
+{% extends 'golf/base.html' %}
+{% block head_block %}
+{% endblock %}
+{% block body_block %}
+    <div class="hero-unit">
+        <h1>Add a Round</h1>
+        <br />
+        <div class="container">
+            <form class="form-horizontal" id="course_form" method="post" action="/golf/add_round/">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                   <div class="form-group">
+                        <label class="col-sm-2 control-label">{{ field.help_text }}</label>&nbsp;
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+                <br />
+                <button class="btn btn-primary" type="submit" name="submit">Add Round</button>
+            </form>
+        </div>
+
+        </div>
+{% endblock %}
