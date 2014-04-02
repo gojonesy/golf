@@ -2,10 +2,11 @@
 import os
 
 SETTINGS_DIR = os.path.dirname(__file__)
-PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
-PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+#PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+#PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
-STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+#STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 LOGIN_URL = '/golf/login/'
 
 DEBUG = True
@@ -14,7 +15,15 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+# Static asset configuration
 
+
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_PATH, 'static'),
+)
 MANAGERS = ADMINS
 
 DATABASES = {
