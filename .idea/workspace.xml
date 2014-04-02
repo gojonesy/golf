@@ -59,10 +59,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf_league/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="26" selection-start="543" selection-end="543" vertical-scroll-proportion="0.4845222" vertical-offset="0" max-vertical-offset="3384">
+            <state line="20" column="26" selection-start="543" selection-end="543" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="3384">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/todo.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="773">
               <folding />
             </state>
           </provider>
@@ -570,7 +579,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/golf_league/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="26" selection-start="543" selection-end="543" vertical-scroll-proportion="0.4845222" vertical-offset="0" max-vertical-offset="3384">
+        <state line="20" column="26" selection-start="543" selection-end="543" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="3384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="773">
           <folding />
         </state>
       </provider>
