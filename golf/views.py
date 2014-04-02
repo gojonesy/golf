@@ -10,6 +10,9 @@ from golf.forms import GolferForm, CourseForm, RoundForm
 from django.db.models import Avg, Count, Sum
 
 
+def custom_404(request):
+    return render_to_response('404.html')
+
 def index(request):
     context = RequestContext(request)
     table_dict = {}

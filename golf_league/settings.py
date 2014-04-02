@@ -9,7 +9,7 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 #STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 LOGIN_URL = '/golf/login/'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
