@@ -3,7 +3,7 @@ from golf_league import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-handler404 = 'app.views.custom_404'
+handler404 = 'golf.views.custom_404'
 
 urlpatterns = patterns('',
     # Examples:
