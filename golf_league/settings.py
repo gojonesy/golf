@@ -6,7 +6,7 @@ SETTINGS_DIR = os.path.dirname(__file__)
 #PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
-#STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 LOGIN_URL = '/golf/login/'
 
 DEBUG = False
