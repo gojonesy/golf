@@ -39,6 +39,8 @@ DATABASES = {
 }
 
 import dj_database_url
+if not os.environ.has_key('DATABASE_URL'):
+    os.environ['DATABASE_URL'] = 'postgres://django_user:@udrey1212@localhost/golf_league'
 DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
