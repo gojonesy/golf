@@ -11,3 +11,6 @@ fi
 git add .
 git commit -m $msg
 git push heroku master
+
+# apply migrations
+heroku run python manage.py migrate golf

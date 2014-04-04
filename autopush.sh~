@@ -5,7 +5,7 @@
 msg=$1
 
 if [[ $msg == "" ]]; then
-	msg="Auto Push"
+	msg="Auto_Push"
 fi
 
 git add .
