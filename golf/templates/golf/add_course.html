@@ -1,5 +1,5 @@
 {% extends 'golf/base.html' %}
-
+{% load widget_tweaks %}
 {% block body_block %}
     <div class="hero-unit">
         <h1>Add a Course</h1>
@@ -7,19 +7,69 @@
         <div class="container">
             <form class="form-horizontal" id="course_form" method="post" action="/golf/add_course/">
                 {% csrf_token %}
-
-
-                {% for field in form.visible_fields %}
-                   <div class="form-group">
-                        <label class="col-sm-2 control-label">{{ field.help_text }}</label>&nbsp;
-                        {{ field }}
-                    </div>
-                {% endfor %}
+                <div class="form-group">
+                    <label class="control-label">Course Name:</label>&nbsp;
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Rating:</label>&nbsp;
+                    {{ form.rating|add_class:"span1" }}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Slope:</label>&nbsp;
+                    {{ form.slope|add_class:"span1" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 1:</label>&nbsp;
+                        {{ form.hole1par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp01|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 2:</label>&nbsp;
+                        {{ form.hole2par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp02|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 3:</label>&nbsp;
+                        {{ form.hole3par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp03|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 4:</label>&nbsp;
+                        {{ form.hole4par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp04|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 5:</label>&nbsp;
+                        {{ form.hole5par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp05|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 6:</label>&nbsp;
+                        {{ form.hole6par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp06|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 7:</label>&nbsp;
+                        {{ form.hole7par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp07|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 8:</label>&nbsp;
+                        {{ form.hole8par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp08|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Hole 9:</label>&nbsp;
+                        {{ form.hole9par|add_class:"span1"|attr:"placeholder:Par" }}
+                        &nbsp;{{ form.hcp09|add_class:"span1"|attr:"placeholder:Hcap" }}
+                </div>
                 {% for hidden in form.hidden_fields %}
                     {{ hidden }}
                 {% endfor %}
-                <br />
-                <button class="btn btn-primary" type="submit" name="submit">Create Course</button>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" name="submit">Create Course</button>
+                </div>
             </form>
 
         </div>

@@ -150,6 +150,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'golf',
     'south',
+    'widget_tweaks',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

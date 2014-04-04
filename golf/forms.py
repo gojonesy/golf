@@ -7,7 +7,7 @@ class GolferForm(forms.ModelForm):
     email = forms.CharField(max_length=128, help_text="Email Address.", required=False)
     phone = forms.CharField(max_length=12, help_text="Phone Number.", required=False)
     phone_alt = forms.CharField(max_length=12, help_text="Alternate Phone", required=False)
-    def_handicap = forms.IntegerField(help_text="Default Handicap.")
+    def_handicap = forms.IntegerField(help_text="Starting Handicap.")
 
     class Meta:
         model = Golfer
@@ -26,6 +26,18 @@ class CourseForm(forms.ModelForm):
     hole7par = forms.IntegerField(help_text="Hole 7 Par")
     hole8par = forms.IntegerField(help_text="Hole 8 Par")
     hole9par = forms.IntegerField(help_text="Hole 9 Par")
+    hcp01 = forms.IntegerField(help_text="Hole 1 Handicap")
+    hcp02 = forms.IntegerField(help_text="Hole 2 Handicap")
+    hcp03 = forms.IntegerField(help_text="Hole 3 Handicap")
+    hcp04 = forms.IntegerField(help_text="Hole 4 Handicap")
+    hcp05 = forms.IntegerField(help_text="Hole 5 Handicap")
+    hcp06 = forms.IntegerField(help_text="Hole 6 Handicap")
+    hcp07 = forms.IntegerField(help_text="Hole 7 Handicap")
+    hcp08 = forms.IntegerField(help_text="Hole 8 Handicap")
+    hcp09 = forms.IntegerField(help_text="Hole 9 Handicap")
+
+    class Meta:
+        model = Course
 
     class Meta:
         model = Course
