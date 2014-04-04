@@ -38,6 +38,15 @@ class Course(models.Model):
     hole7par = models.IntegerField(default=0)
     hole8par = models.IntegerField(default=0)
     hole9par = models.IntegerField(default=0)
+    hcap01 = models.IntegerField(default=0)
+    hcap02 = models.IntegerField(default=0)
+    hcap03 = models.IntegerField(default=0)
+    hcap04 = models.IntegerField(default=0)
+    hcap05 = models.IntegerField(default=0)
+    hcap06 = models.IntegerField(default=0)
+    hcap07 = models.IntegerField(default=0)
+    hcap08 = models.IntegerField(default=0)
+    hcap09 = models.IntegerField(default=0)
     mod_date = models.DateField(auto_now=True)
 
     @property
