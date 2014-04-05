@@ -2,7 +2,7 @@
 {% block head_block %}
         <script type="text/javascript" charset="utf-8">
             function rnd_sum() {
-                var arr = document.getElementsByName('hole');
+                var arr = document.getElementsByClassName('hole');
                 var tot = 0;
                 for(var i=0;i<arr.length;i++){
                     if(parseInt(arr[i].value))
@@ -44,19 +44,19 @@
                         <small>{{ form.week_num.help_text }}</small>&nbsp;{{ form.week_num|attr:"class:span1" }}
                     </div>
                     <div class="controls controls-row row-fluid">
-                        {% render_field form.hole_1 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 1" %}
-                        {% render_field form.hole_2 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 2" %}
-                        {% render_field form.hole_3 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 3" %}
+                        {% render_field form.hole_1 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 1" %}
+                        {% render_field form.hole_2 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 2" %}
+                        {% render_field form.hole_3 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 3" %}
                     </div>
                     <div class="controls controls-row row-fluid">
-                        {% render_field form.hole_4 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 4" %}
-                        {% render_field form.hole_5 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 5" %}
-                        {% render_field form.hole_6 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 6" %}
+                        {% render_field form.hole_4 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 4" %}
+                        {% render_field form.hole_5 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 5" %}
+                        {% render_field form.hole_6 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 6" %}
                     </div>
                     <div class="controls controls-row row-fluid">
-                        {% render_field form.hole_7 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 7" %}
-                        {% render_field form.hole_8 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 8" %}
-                        {% render_field form.hole_9 class+="input-small" onChange="rnd_sum()" name="hole" placeholder="Hole 9" %}
+                        {% render_field form.hole_7 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 7" %}
+                        {% render_field form.hole_8 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 8" %}
+                        {% render_field form.hole_9 class+="input-small hole" onChange="rnd_sum()" placeholder="Hole 9" %}
                     </div>
                     <div class="controls controls-row row-fluid">
                         <small>Round Score:</small>
