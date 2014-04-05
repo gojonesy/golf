@@ -1,31 +1,49 @@
 {% extends 'golf/base.html' %}
 
 {% block body_block %}
+        <div class="hero-unit">
         {% if course %}
             <h1>{{ course }}</h1>
-            <ul>
-                <li>Rating: {{ course.rating }}</li>
-                <li>Slope: {{ course.slope }}</li>
-                <li>Par: {{ course.totalpar }}</li>
-                <li>Modified: {{ course.mod_date }}</li>
-            </ul>
-            <table>
-                <th>Hole:</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
-                <tr>
-                    <td>Par:</td>
-                    <td>{{ course.hole1par }}</td>
-                    <td>{{ course.hole2par }}</td>
-                    <td>{{ course.hole3par }}</td>
-                    <td>{{ course.hole4par }}</td>
-                    <td>{{ course.hole5par }}</td>
-                    <td>{{ course.hole6par }}</td>
-                    <td>{{ course.hole7par }}</td>
-                    <td>{{ course.hole8par }}</td>
-                    <td>{{ course.hole9par }}</td>
-                </tr>
-            </table>
+            <br />
+            <div class="container">
+                <div class="span12">
+                    <ul>
+                        <li>Rating: {{ course.rating }}</li>
+                        <li>Slope: {{ course.slope }}</li>
+                        <li>Par: {{ course.total_par }}</li>
+                        <li>Modified: {{ course.mod_date }}</li>
+                    </ul>
+                    <table class="table table-striped table-bordered table-condensed">
+                        <th>Hole:</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                        <tr>
+                            <td>Par:</td>
+                            <td>{{ course.hole1par }}</td>
+                            <td>{{ course.hole2par }}</td>
+                            <td>{{ course.hole3par }}</td>
+                            <td>{{ course.hole4par }}</td>
+                            <td>{{ course.hole5par }}</td>
+                            <td>{{ course.hole6par }}</td>
+                            <td>{{ course.hole7par }}</td>
+                            <td>{{ course.hole8par }}</td>
+                            <td>{{ course.hole9par }}</td>
+                        </tr>
+                        <tr>
+                            <td>Handicap:</td>
+                            <td>{{ course.hcap01 }}</td>
+                            <td>{{ course.hcap02 }}</td>
+                            <td>{{ course.hcap03 }}</td>
+                            <td>{{ course.hcap04 }}</td>
+                            <td>{{ course.hcap05 }}</td>
+                            <td>{{ course.hcap06 }}</td>
+                            <td>{{ course.hcap07 }}</td>
+                            <td>{{ course.hcap08 }}</td>
+                            <td>{{ course.hcap09 }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         {% else %}
-            Course not found.
+            <h1>Course not found.</h1>
         {% endif %}
-
+        </div>
 {% endblock %}

@@ -1,7 +1,10 @@
 Add:
 
-- Hole Breakdown w/ Handicap
+- Hole Breakdown w/ Handicap!!!!
 - Test Handicap Calculation
-- More Views (One Golfer, All YTD Stats, Recent Rounds)
-
-- 
+- More Views
+    - Add YTD stats and last 10 rounds to Golfer view
+    - All Golfers YTD Stats View
+    - Round view
+    - ALl Rounds view
+    -

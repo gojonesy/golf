@@ -51,7 +51,8 @@ class Course(models.Model):
 
     @property
     def total_par(self):
-        return self.hole1par + self.hole2par + self.hole3par + self.hole4par + self.hole1par + self.hole6par + self.hole7par + self.hole8par + self.hole9par
+        return self.hole1par + self.hole2par + self.hole3par + self.hole4par + self.hole1par + self.hole6par + \
+               self.hole7par + self.hole8par + self.hole9par
 
     def __unicode__(self):
         return self.name
@@ -80,6 +81,7 @@ class Round(models.Model):
     @property
     def score(self):
         return self.hole_1 + self.hole_2 + self.hole_3 + self.hole_4 + self.hole_5 + self.hole_6 + self.hole_7 + self.hole_8 + self.hole_9
+
     @property
     def points(self):
         c = Course.objects.get(name=self.course_id)

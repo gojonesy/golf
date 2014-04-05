@@ -70,12 +70,29 @@ def course(request, course_id):
     return render_to_response('golf/course.html', {'course': course}, context)
 
 
+def round(request, round_id):
+    context = RequestContext(request)
+    try:
+        round = Round.objects.get(pk=round_id)
+    except Round.DoesNotExist:
+        raise Http404
+    return render_to_response('golf/round.html', {'round': round}, context)
+
+
 def courses(request):
     context = RequestContext(request)
 
     course_list = Course.objects.all
 
     return render_to_response('golf/courses.html', {'courses': course_list}, context)
+
+
+def rounds(request):
+    context = RequestContext(request)
+
+    round_list = Round.objects.all
+
+    return render_to_response('golf/rounds.html', {'rounds': round_list}, context)
 
 
 def about(request):
