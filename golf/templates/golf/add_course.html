@@ -5,71 +5,65 @@
         <h1>Add a Course</h1>
         <br />
         <div class="container">
-            <form class="form-horizontal" id="course_form" method="post" action="/golf/add_course/">
+            <form class="container-fluid" id="course_form" method="post" action="/golf/add_course/">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label class="control-label">Course Name:</label>&nbsp;
-                    {{ form.name }}
+                {{ form.media }}
+                {% if form.errors %}
+                <div class="alert alert-error">
+                        {% for error in form.non_field_errors %}
+                            <h5><span class="label label-danger">{{ error }}</span></h5>
+                        {% endfor %}
+                        {% for field in form.visible_fields %}
+                            {% if field.errors %}
+                                <h5><span class="label label-warning">{{ field.help_text }}</span>
+                                    {{ field.errors }}</h5>
+                            {% endif %}
+                        {% endfor %}
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Rating:</label>&nbsp;
-                    {{ form.rating|add_class:"span1" }}
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Slope:</label>&nbsp;
-                    {{ form.slope|add_class:"span1" }}
-                </div>
+                {% endif %}
                 <div class="control-group">
-                        <label class="control-label">Hole 1:</label>&nbsp;
-                        {{ form.hole1par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp01|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 2:</label>&nbsp;
-                        {{ form.hole2par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp02|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 3:</label>&nbsp;
-                        {{ form.hole3par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp03|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 4:</label>&nbsp;
-                        {{ form.hole4par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp04|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 5:</label>&nbsp;
-                        {{ form.hole5par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp05|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 6:</label>&nbsp;
-                        {{ form.hole6par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp06|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 7:</label>&nbsp;
-                        {{ form.hole7par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp07|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 8:</label>&nbsp;
-                        {{ form.hole8par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp08|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                <div class="control-group">
-                        <label class="control-label">Hole 9:</label>&nbsp;
-                        {{ form.hole9par|add_class:"span1"|attr:"placeholder:Par" }}
-                        &nbsp;{{ form.hcp09|add_class:"span1"|attr:"placeholder:Hcap" }}
-                </div>
-                {% for hidden in form.hidden_fields %}
+                    <div class="controls row-fluid">
+                        {{ form.name|attr:"placeholder:Course Name" }}
+                    </div>
+                    <div class="controls controls-row row-fluid">
+                        {{ form.rating|add_class:"span1"|attr:"placeholder: Rating" }}
+                        {{ form.slope|add_class:"span1"|attr:"placeholder:Slope" }}
+                    </div>
+                    <div class="controls controls-row row-fluid">
+                        <label class="control-label">Holes 1-3:</label>&nbsp;
+                        {{ form.hole1par|add_class:"span1"|attr:"placeholder:#1 Par" }}
+                        &nbsp;{{ form.hcap01|add_class:"span1"|attr:"placeholder:#1 Hcap" }}
+                        {{ form.hole2par|add_class:"span1"|attr:"placeholder:#2 Par" }}
+                        &nbsp;{{ form.hcap02|add_class:"span1"|attr:"placeholder:#2 Hcap" }}
+                        {{ form.hole3par|add_class:"span1"|attr:"placeholder:#3 Par" }}
+                        &nbsp;{{ form.hcap03|add_class:"span1"|attr:"placeholder:#3 Hcap" }}
+                    </div>
+                    <div class="controls controls-row row-fluid">
+                        <label class="control-label">Holes 4-6:</label>&nbsp;
+                        {{ form.hole4par|add_class:"span1"|attr:"placeholder:#4 Par" }}
+                        &nbsp;{{ form.hcap04|add_class:"span1"|attr:"placeholder:#4 Hcap" }}
+                        {{ form.hole5par|add_class:"span1"|attr:"placeholder:#5 Par" }}
+                        &nbsp;{{ form.hcap05|add_class:"span1"|attr:"placeholder:#5 Hcap" }}
+                        {{ form.hole6par|add_class:"span1"|attr:"placeholder:#6 Par" }}
+                        &nbsp;{{ form.hcap06|add_class:"span1"|attr:"placeholder:#6 Hcap" }}
+                    </div>
+                    <div class="controls controls-row row-fluid">
+                        <label class="control-label">Hole 7-9:</label>&nbsp;
+                        {{ form.hole7par|add_class:"span1"|attr:"placeholder:#7 Par" }}
+                        &nbsp;{{ form.hcap07|add_class:"span1"|attr:"placeholder:#7 Hcap" }}
+                        {{ form.hole8par|add_class:"span1"|attr:"placeholder:#8 Par" }}
+                        &nbsp;{{ form.hcap08|add_class:"span1"|attr:"placeholder:#8 Hcap" }}
+                        {{ form.hole9par|add_class:"span1"|attr:"placeholder:#9 Par" }}
+                        &nbsp;{{ form.hcap09|add_class:"span1"|attr:"placeholder:#9 Hcap" }}
+                    </div>
+                    {% for hidden in form.hidden_fields %}
                     {{ hidden }}
-                {% endfor %}
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit" name="submit">Create Course</button>
+                    {% endfor %}
+                    <div class="controls controls-row row-fluid">
+                        <button class="btn btn-primary" type="submit" name="submit">Create Course</button>
+                    </div>
                 </div>
+
             </form>
 
         </div>

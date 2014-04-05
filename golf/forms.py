@@ -26,18 +26,15 @@ class CourseForm(forms.ModelForm):
     hole7par = forms.IntegerField(help_text="Hole 7 Par")
     hole8par = forms.IntegerField(help_text="Hole 8 Par")
     hole9par = forms.IntegerField(help_text="Hole 9 Par")
-    hcp01 = forms.IntegerField(help_text="Hole 1 Handicap")
-    hcp02 = forms.IntegerField(help_text="Hole 2 Handicap")
-    hcp03 = forms.IntegerField(help_text="Hole 3 Handicap")
-    hcp04 = forms.IntegerField(help_text="Hole 4 Handicap")
-    hcp05 = forms.IntegerField(help_text="Hole 5 Handicap")
-    hcp06 = forms.IntegerField(help_text="Hole 6 Handicap")
-    hcp07 = forms.IntegerField(help_text="Hole 7 Handicap")
-    hcp08 = forms.IntegerField(help_text="Hole 8 Handicap")
-    hcp09 = forms.IntegerField(help_text="Hole 9 Handicap")
-
-    class Meta:
-        model = Course
+    hcap01 = forms.IntegerField(help_text="Hole 1 Handicap")
+    hcap02 = forms.IntegerField(help_text="Hole 2 Handicap")
+    hcap03 = forms.IntegerField(help_text="Hole 3 Handicap")
+    hcap04 = forms.IntegerField(help_text="Hole 4 Handicap")
+    hcap05 = forms.IntegerField(help_text="Hole 5 Handicap")
+    hcap06 = forms.IntegerField(help_text="Hole 6 Handicap")
+    hcap07 = forms.IntegerField(help_text="Hole 7 Handicap")
+    hcap08 = forms.IntegerField(help_text="Hole 8 Handicap")
+    hcap09 = forms.IntegerField(help_text="Hole 9 Handicap")
 
     class Meta:
         model = Course
@@ -46,7 +43,8 @@ class CourseForm(forms.ModelForm):
 class RoundForm(forms.ModelForm):
     golfer_id = forms.ModelChoiceField(queryset=Golfer.objects.all().order_by('name'), empty_label="(Select a golfer...)",
                                        help_text="Golfer")
-    course_id = forms.ModelChoiceField(queryset=Course.objects.all().order_by('name'), help_text="Course")
+    course_id = forms.ModelChoiceField(queryset=Course.objects.all().order_by('name'), help_text="Course",
+                                       empty_label="(Select a course...)")
     date = forms.DateField(help_text="Date")
     year = forms.IntegerField(widget=forms.HiddenInput(), initial=2014)
     week_num = forms.ChoiceField(widget=forms.Select, choices=((str(x), x) for x in range(1, 19)), help_text="Week No.")
@@ -62,5 +60,4 @@ class RoundForm(forms.ModelForm):
 
     class Meta:
         model = Round
-
 

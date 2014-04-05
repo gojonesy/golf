@@ -34,7 +34,7 @@ def index(request):
 
         table_dict[g.id] = {'points': points_list}
 
-    round_list = Round.objects.all()
+    round_list = Round.objects.order_by('-date')[:10]
 
     context_dict = {'golfers': golfer_list, 'rounds': round_list, 'nums': nums, 'table': table_dict}
 
@@ -60,6 +60,7 @@ def golfer(request, golfer_id):
     return render_to_response('golf/golfer.html', {'golfer': golfer, 'avg_score': avgS, 'num_rds': numr,
                                                    'points': total, 'holes': holes, 'handicap': hcap}, context)
 
+
 def course(request, course_id):
     context = RequestContext(request)
     try:
@@ -67,6 +68,21 @@ def course(request, course_id):
     except Course.DoesNotExist:
         raise Http404
     return render_to_response('golf/course.html', {'course': course}, context)
+
+
+def courses(request):
+    context = RequestContext(request)
+
+    course_list = Course.objects.all
+
+    return render_to_response('golf/courses.html', {'courses': course_list}, context)
+
+
+def about(request):
+    context = RequestContext(request)
+
+    return render_to_response('golf/about.html', context)
+
 
 def user_login(request):
     context = RequestContext(request)
@@ -107,7 +123,7 @@ def add_golfer(request):
         if form.is_valid():
             form.save(commit=True)
 
-            return index(request)
+            return HttpResponseRedirect('/golf/')
         else:
             print form.errors
     else:
@@ -126,7 +142,7 @@ def add_course(request):
         if form.is_valid():
             form.save(commit=True)
 
-            return index(request)
+            return HttpResponseRedirect('/golf/courses/')
         else:
             print form.errors
     else:
@@ -148,7 +164,7 @@ def add_round(request):
             form.cleaned_data['year'] = dateval.year
             form.save(commit=True)
 
-            return index(request)
+            return HttpResponseRedirect('/golf/')
         else:
             print form.errors
     else:
