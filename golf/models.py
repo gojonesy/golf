@@ -80,7 +80,8 @@ class Round(models.Model):
 
     @property
     def score(self):
-        return self.hole_1 + self.hole_2 + self.hole_3 + self.hole_4 + self.hole_5 + self.hole_6 + self.hole_7 + self.hole_8 + self.hole_9
+        return self.hole_1 + self.hole_2 + self.hole_3 + self.hole_4 + self.hole_5 + self.hole_6 + self.hole_7 + \
+               self.hole_8 + self.hole_9
 
     @property
     def points(self):

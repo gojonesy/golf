@@ -41,19 +41,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todo.txt" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="todo.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="32" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
+            <state line="7" column="61" selection-start="446" selection-end="446" vertical-scroll-proportion="0.16912752" vertical-offset="0" max-vertical-offset="745">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="60" selection-start="2051" selection-end="2051" vertical-scroll-proportion="0.5821475" vertical-offset="504" max-vertical-offset="2106">
+            <state line="83" column="15" selection-start="3034" selection-end="3034" vertical-scroll-proportion="0.0" vertical-offset="1314" max-vertical-offset="2124">
               <folding />
             </state>
           </provider>
@@ -79,7 +79,6 @@
         <option value="$PROJECT_DIR$/golf/templates/golf/add_round.html" />
         <option value="$PROJECT_DIR$/golf/admin.py" />
         <option value="$PROJECT_DIR$/golf/templates/golf/course.html" />
-        <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/golf/views.py" />
         <option value="$PROJECT_DIR$/golf/urls.py" />
         <option value="$PROJECT_DIR$/golf/templates/golf/rounds.html" />
@@ -88,14 +87,15 @@
         <option value="$PROJECT_DIR$/golf/templates/golf/index.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/courses.html" />
         <option value="$PROJECT_DIR$/golf/models.py" />
+        <option value="$PROJECT_DIR$/todo.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="64" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1537" />
-    <option name="height" value="905" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -337,7 +337,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1537" height="905" extended-state="6" />
+    <frame x="64" y="24" width="1537" height="877" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -719,16 +719,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/todo.txt">
+    <entry file="file://$PROJECT_DIR$/golf/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="32" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
+        <state line="83" column="15" selection-start="3034" selection-end="3034" vertical-scroll-proportion="0.0" vertical-offset="1314" max-vertical-offset="2124">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/golf/models.py">
+    <entry file="file://$PROJECT_DIR$/todo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="60" selection-start="2051" selection-end="2051" vertical-scroll-proportion="0.5821475" vertical-offset="504" max-vertical-offset="2106">
+        <state line="7" column="61" selection-start="446" selection-end="446" vertical-scroll-proportion="0.16912752" vertical-offset="0" max-vertical-offset="745">
           <folding />
         </state>
       </provider>
