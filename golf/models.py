@@ -51,7 +51,7 @@ class Course(models.Model):
 
     @property
     def total_par(self):
-        return self.hole1par + self.hole2par + self.hole3par + self.hole4par + self.hole1par + self.hole6par + \
+        return self.hole1par + self.hole2par + self.hole3par + self.hole4par + self.hole5par + self.hole6par + \
                self.hole7par + self.hole8par + self.hole9par
 
     def __unicode__(self):
