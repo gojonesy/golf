@@ -51,14 +51,14 @@ def golfer(request, golfer_id):
         numr = num_rds(golfer_id, cur_year)
         total = golfer.total_points
         holes = hole_breakdown(golfer_id, cur_year)
-        hcap = handicap(golfer_id, cur_year)
-        if hcap == 0:
-            hcap = golfer.def_handicap
+        #hcap = handicap(golfer_id, cur_year)
+        #if hcap == 0:
+            #hcap = golfer.def_handicap
             #Round.objects.all().filter(golfer_id=golfer).aggregate(Avg(score))
     except Golfer.DoesNotExist:
         raise Http404
     return render_to_response('golf/golfer.html', {'golfer': golfer, 'avg_score': avgS, 'num_rds': numr,
-                                                   'points': total, 'holes': holes, 'handicap': hcap}, context)
+                                                   'points': total, 'holes': holes}, context)
 
 
 def course(request, course_id):

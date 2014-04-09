@@ -8,6 +8,7 @@ class Golfer(models.Model):
     phone = models.CharField(max_length=128, null=True, blank=True)
     phone_alt = models.CharField(max_length=128, null=True, blank=True)
     def_handicap = models.IntegerField(default=0)
+    handicap = models.IntegerField(default=0, null=True, blank=True)
     mod_date = models.DateField(auto_now=True)
 
     @property
@@ -20,6 +21,28 @@ class Golfer(models.Model):
             total += r.points
 
         return total
+
+    def save(self):
+        year = datetime.now().year
+        scores = []
+        rounds = Round.objects.filter(golfer_id=self.pk).order_by('week_num')[:5]
+
+        for r in rounds:
+            if r.date.year == year:
+                c = Course.objects.get(name=r.course_id)
+                # Year is the same. Get the correct number of rounds
+                calc = ((r.score - c.rating) * 113) / c.slope
+                scores.append(calc)
+
+        if len(scores) == 5:
+            # get the lowest and multiply by .96 to get the handicap
+            lowest = min(float(i) for i in scores)
+            self.handicap = lowest * .96
+        else:
+            # less than 5 rounds...Returning 0
+            self.handicap = self.def_handicap
+
+        super(Golfer, self).save()
 
     def __unicode__(self):
         return self.name
@@ -77,6 +100,29 @@ class Round(models.Model):
 
     class Meta:
         unique_together = ('week_num', 'year', 'golfer_id')
+
+    def save(self):
+        year = datetime.now().year
+        scores = []
+        rounds = Round.objects.filter(golfer_id=self.golfer_id).order_by('week_num')[:5]
+        golfer = Golfer.objects.get(pk=self.golfer_id.id)
+        for r in rounds:
+            if r.date.year == year:
+                c = Course.objects.get(name=r.course_id)
+                # Year is the same. Get the correct number of rounds
+                calc = ((r.score - c.rating) * 113) / c.slope
+                scores.append(calc)
+
+        if len(scores) == 5:
+            # get the lowest and multiply by .96 to get the handicap
+            lowest = min(float(i) for i in scores)
+            golfer.handicap = lowest * .96
+        else:
+            # less than 5 rounds...Returning 0
+            golfer.handicap = golfer.def_handicap
+
+        print golfer.handicap
+        super(Round, self).save()
 
     @property
     def score(self):
