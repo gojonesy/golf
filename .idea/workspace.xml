@@ -57,7 +57,7 @@
       <file leaf-file-name="round.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/golf/templates/golf/round.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="24" selection-start="880" selection-end="880" vertical-scroll-proportion="0.35146442" vertical-offset="72" max-vertical-offset="954">
+            <state line="17" column="64" selection-start="898" selection-end="898" vertical-scroll-proportion="0.32635984" vertical-offset="72" max-vertical-offset="972">
               <folding />
             </state>
           </provider>
@@ -89,9 +89,9 @@
         <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/golf/templates/golf/golfer.html" />
         <option value="$PROJECT_DIR$/golf/forms.py" />
-        <option value="$PROJECT_DIR$/golf/templates/golf/round.html" />
         <option value="$PROJECT_DIR$/golf/models.py" />
         <option value="$PROJECT_DIR$/golf/views.py" />
+        <option value="$PROJECT_DIR$/golf/templates/golf/round.html" />
       </list>
     </option>
   </component>
@@ -672,7 +672,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/round.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="24" selection-start="880" selection-end="880" vertical-scroll-proportion="0.35146442" vertical-offset="72" max-vertical-offset="954">
+        <state line="17" column="64" selection-start="898" selection-end="898" vertical-scroll-proportion="0.32635984" vertical-offset="72" max-vertical-offset="972">
           <folding />
         </state>
       </provider>
