@@ -13,8 +13,10 @@
                     <li>Date: {{ round.date }}</li>
                     <li>Score: {{ round.score }}</li>
                     <li>Points: {{ round.points }}</li>
-                    <li>Scorecard:</li>
+                    <li>Adjusted Score: {{ round.mod_score }}</li>
+                    <li>Adjusted Points: {{ round.mod_points }}</li>
                 </ul>
+                    <h3>Scorecard:</h3>
                     <table class="table table-striped table-bordered table-condensed">
                         <th>Hole 1</th><th>Hole 2</th><th>Hole 3</th><th>Hole 4</th>
                         <th>Hole 5</th><th>Hole 6</th><th>Hole 7</th><th>Hole 8</th><th>Hole 9</th>
@@ -22,6 +24,16 @@
                             <td>{{ round.hole_1 }}</td><td>{{ round.hole_2 }}</td><td>{{ round.hole_3 }}</td><td>{{ round.hole_4 }}</td>
                             <td>{{ round.hole_5 }}</td><td>{{ round.hole_6 }}</td><td>{{ round.hole_7 }}</td><td>{{ round.hole_8 }}</td>
                             <td>{{ round.hole_9 }}</td>
+                        </tr>
+                    </table>
+                    <h3>Adjusted Scores:</h3>
+                    <table class="table table-striped table-bordered table-condensed">
+                        <th>Hole 1</th><th>Hole 2</th><th>Hole 3</th><th>Hole 4</th>
+                        <th>Hole 5</th><th>Hole 6</th><th>Hole 7</th><th>Hole 8</th><th>Hole 9</th>
+                        <tr>
+                            {% for s in round.adj_scores %}
+                                <td>{{ s }}</td>
+                            {% endfor %}
                         </tr>
                     </table>
                 {% else %}

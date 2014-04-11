@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from golf.forms import GolferForm, CourseForm, RoundForm
 from django.db.models import Avg, Count, Sum
+import math
 
 
 def custom_404(request):
@@ -73,10 +74,10 @@ def course(request, course_id):
 def round(request, round_id):
     context = RequestContext(request)
     try:
-        round = Round.objects.get(pk=round_id)
+        r = Round.objects.get(pk=round_id)
     except Round.DoesNotExist:
         raise Http404
-    return render_to_response('golf/round.html', {'round': round}, context)
+    return render_to_response('golf/round.html', {'round': r}, context)
 
 
 def courses(request):
@@ -191,26 +192,6 @@ def add_round(request):
 
 
 # Total functions follow. These are not views... Keep the views above this comment.
-# def update_totals(g_id, year, handicap, avg_score, avg_points, num_rds, total_points, hole_break):
-#     golfer = Golfer.objects.get(id=g_id)
-#     updated_values = {'handicap': handicap, 'avg_score': avg_score, 'num_rds': num_rds, 'points': total_points,
-#                       'avg_points': avg_points, 'eagle': hole_break[2], 'birdie': hole_break[1], 'par': hole_break[0],
-#                       'bogey': hole_break[3], 'zerot': hole_break[4]}
-#     try:
-#         obj = Totals.objects.get(golfer_id=golfer, season=year)
-#         for key, value in updated_values.iteritems():
-#             setattr(obj, key, value)
-#         obj.save()
-#     except Totals.DoesNotExist:
-#         updated_values.update({'golfer_id': golfer, 'season': year})
-#         obj = Totals(**updated_values)
-#         obj.save()
-    # totals, created = Totals.objects.update_or_create(golfer_id=golfer, season=year,
-    #                                                     defaults={'handicap': handicap, 'avg_score': avg_score, 'num_rds': num_rds,
-    #                                                          'points': total_points, 'avg_points': avg_points,
-    #                                                          'eagle': hole_break[2], 'birdie': hole_break[1],
-    #                                                          'par': hole_break[0], 'bogey': hole_break[3],
-    #                                                          'zerot': hole_break[4]})
 
 def num_rds(g_id, year):
     # count the number of rounds for a golfer by year
@@ -353,3 +334,5 @@ def handicap(g_id, year):
         handicap = 0.0
 
     return handicap
+
+

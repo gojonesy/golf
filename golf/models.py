@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+import math
 
 
 class Golfer(models.Model):
@@ -96,6 +97,7 @@ class Round(models.Model):
     hole_7 = models.IntegerField(default=0)
     hole_8 = models.IntegerField(default=0)
     hole_9 = models.IntegerField(default=0)
+    cur_handicap = models.IntegerField(default=0, null=True, blank=True)
     mod_date = models.DateField(auto_now=True)
 
     class Meta:
@@ -117,17 +119,52 @@ class Round(models.Model):
             # get the lowest and multiply by .96 to get the handicap
             lowest = min(float(i) for i in scores)
             golfer.handicap = lowest * .96
+            self.cur_handicap = golfer.handicap
         else:
             # less than 5 rounds...Returning 0
             golfer.handicap = golfer.def_handicap
+            self.cur_handicap = golfer.handicap
 
-        print golfer.handicap
+        # print golfer.handicap
         super(Round, self).save()
+
+    @property
+    def adj_scores(self):
+        # function to adjust scores hole by hole for handicap. Will return list of scores
+        # make list of scores
+        c = Course.objects.get(name=self.course_id)
+        scores = [[self.hole_1, c.hcap01], [self.hole_2, c.hcap02], [self.hole_3, c.hcap03], [self.hole_4, c.hcap04], \
+                 [self.hole_5, c.hcap05], [self.hole_6, c.hcap06], [self.hole_7, c.hcap07], \
+                 [self.hole_8, c.hcap08], [self.hole_9, c.hcap09]]
+
+        adj_final = []
+        for s in scores:
+            per_hole_handicap = math.floor(self.cur_handicap / 9)
+            leftovers = self.cur_handicap % 9
+            if per_hole_handicap >= 1:
+                adj_score = s[0] - per_hole_handicap
+                if leftovers >= s[1]:
+                    final_score = adj_score-1
+                else:
+                    final_score = adj_score
+            else:
+                if leftovers >= s[1]:
+                    final_score = s[0] - 1
+                else:
+                    final_score = s[0]
+            adj_final.append(int(final_score))
+
+        return adj_final
 
     @property
     def score(self):
         return self.hole_1 + self.hole_2 + self.hole_3 + self.hole_4 + self.hole_5 + self.hole_6 + self.hole_7 + \
                self.hole_8 + self.hole_9
+
+    @property
+    def mod_score(self):
+        final = self.adj_scores
+        return sum(final)
 
     @property
     def points(self):
@@ -136,6 +173,7 @@ class Round(models.Model):
                           [self.hole_5, c.hole5par], [self.hole_6, c.hole6par], [self.hole_7, c.hole7par], [self.hole_8, c.hole8par],
                           [self.hole_9, c.hole9par]]
         points = 0.0
+
         hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
         for s in scores:
             if s[0] - s[1] == 0:
@@ -154,6 +192,33 @@ class Round(models.Model):
         points += hole_break['Eagle'] * 1
 
         return points
+
+    @property
+    def mod_points(self):
+        c = Course.objects.get(name=self.course_id)
+        scores = [[self.adj_scores[0], c.hole1par], [self.adj_scores[1], c.hole2par], [self.adj_scores[2], c.hole3par],
+                  [self.adj_scores[3], c.hole4par], [self.adj_scores[4], c.hole5par], [self.adj_scores[5], c.hole6par],
+                  [self.adj_scores[6], c.hole7par], [self.adj_scores[7], c.hole8par], [self.adj_scores[8], c.hole9par]]
+        mod_points = 0.0
+
+        hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
+        for s in scores:
+            if s[0] - s[1] == 0:
+                hole_break['Par'] += 1
+            elif s[0] - s[1] == -1:
+                hole_break['Birdie'] += 1
+            elif s[0] - s[1] <= -2:
+                hole_break['Eagle'] += 1
+            elif s[0] - s[1] == 1:
+                hole_break['Bogey'] += 1
+            else:
+                hole_break['Other'] += 1
+
+        mod_points += hole_break['Par'] * .5
+        mod_points += hole_break['Birdie'] * 1
+        mod_points += hole_break['Eagle'] * 1
+
+        return mod_points
 
     def __unicode__(self):
         return str(self.week_num)
