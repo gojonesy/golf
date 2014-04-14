@@ -25,6 +25,17 @@ class Golfer(models.Model):
         return total
 
     @property
+    def adj_points(self):
+        # Sum the points for a golfer for the current year
+        total = 0.0
+        cur_year = datetime.now().year
+        rounds = Round.objects.all().filter(date__year=cur_year, golfer_id=self.id)
+        for r in rounds:
+            total += r.mod_points
+
+        return total
+
+    @property
     def avg_score(self):
         # Returns golfer's average for the year
         rounds = Round.objects.all().filter(date__year=datetime.now().year, golfer_id=self)
@@ -148,6 +159,8 @@ class Round(models.Model):
         scores = []
         rounds = Round.objects.filter(golfer_id=self.golfer_id).order_by('week_num')
         golfer = Golfer.objects.get(pk=self.golfer_id.id)
+        self.cur_handicap = golfer.handicap
+        super(Round, self).save()
         for r in rounds:
             if r.date.year == year:
                 c = Course.objects.get(name=r.course_id)
@@ -171,10 +184,13 @@ class Round(models.Model):
             print "Pre convert: ", flt_s
             print "Post convert: ", int(round(flt_s))
             temp_h.append(int(round(flt_s)))
-            print temp_h
 
-        golfer.handicap = sum(temp_h) / len(temp_h)
-        self.cur_handicap = sum(temp_h) / len(temp_h)
+        if not temp_h:
+            golfer.def_handicap = self.cur_handicap
+        else:
+            self.cur_handicap = sum(temp_h) / len(temp_h)
+            golfer.handicap = sum(temp_h) / len(temp_h)
+        # self.cur_handicap = sum(temp_h) / len(temp_h)
 
         super(Round, self).save()
 

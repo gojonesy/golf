@@ -1,0 +1,33 @@
+{% extends 'golf/base.html' %}
+{% block head_block %}
+{% endblock %}
+{% block body_block %}
+    <div class="hero-unit">
+        <h1>Bell Monday Night Men's Golf League</h1><br />
+        <div class="container">
+             <div class="span12">
+                 <h3>Weekly Roster</h3>
+                {% if roster %}
+                     <table class="table table-striped table-bordered table-condensed">
+                        <th>Golfer</th><th>Handicap</th><th>Adjusted Points</th>
+                    {% for r in roster %}
+                        <tr>
+                            <td><a href="/golf/golfer/{{ r.pk }}">{{ r }}</a></td>
+                            <td>{{ r.handicap }}</td>
+                            <td>{{ r.adj_points }}</td>
+                        </tr>
+                    {% endfor %}
+                     </table>
+                {% else %}
+                    <strong>There are no courses present</strong>
+                {% endif %}
+            </div>
+            <!-- /span -->
+		</div>
+        <!-- /row -->
+
+        </div>
+
+        </div>
+
+{% endblock %}

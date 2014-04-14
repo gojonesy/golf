@@ -28,19 +28,18 @@
                             {% if user.is_authenticated %}
                                 <li class="navbar-text">Welcome, {{ user.username }}</li>
                                 <li><a href="/golf/logout/">Logout</a></li>
+                                <li><a href="/golf/add_golfer/">Add Golfer</a></li>
+                                <li><a href="/golf/add_course/">Add Course</a></li>
+                                <li><a href="/golf/add_round/">Add Round</a></li>
                             {% else %}
                                 <li><a href="/golf/login/">Login</a></li>
                             {% endif %}
                         </ul>
                         <ul class="nav">
-                            {% if user.is_authenticated %}
-                                <li><a href="/golf/add_golfer/">Add Golfer</a></li>
-                                <li><a href="/golf/add_course/">Add Course</a></li>
-                                <li><a href="/golf/add_round/">Add Round</a></li>
-                            {% endif %}
                                 <li><a href="/golf/about/">About</a></li>
                                 <li><a href="/golf/courses/">Course List</a></li>
                                 <li><a href="/golf/rounds/">Round List</a></li>
+                                <li><a href="/golf/roster/">Roster</a></li>
                         </ul>
                     </div>
                     <!-- /.nav-collapse -->

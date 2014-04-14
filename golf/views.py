@@ -17,7 +17,7 @@ def custom_404(request):
 def index(request):
     context = RequestContext(request)
     table_dict = {}
-    golfer_list = Golfer.objects.order_by('-name')
+    golfer_list = sorted(Golfer.objects.order_by(), key=lambda a: a.adj_points, reverse=True)
     cur_year = datetime.now().year
 
     nums = []
@@ -30,7 +30,7 @@ def index(request):
         rounds = Round.objects.all().filter(date__year=cur_year, golfer_id=g.id).order_by('-week_num')
         # temp_list.append(g.id)
         for r in rounds:
-            points_list[r.week_num - 1] = r.points
+            points_list[r.week_num - 1] = r.mod_points
             #((r.week_num - 1), r.points)
 
         table_dict[g.id] = {'points': points_list}
@@ -102,7 +102,7 @@ def about(request):
 def roster(request):
     context = RequestContext(request)
 
-    roster_list = sorted(Golfer.objects.all(), key=lambda a: a.total_points)
+    roster_list = sorted(Golfer.objects.all(), key=lambda a: a.total_points, reverse=True)
 
     return render_to_response('golf/roster.html', {'roster': roster_list},  context)
 
