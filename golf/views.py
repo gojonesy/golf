@@ -48,19 +48,15 @@ def golfer(request, golfer_id):
 
     try:
         golfer = Golfer.objects.get(pk=golfer_id)
-        avgS = avg_score(golfer_id, cur_year)
-        numr = num_rds(golfer_id, cur_year)
         total = golfer.total_points
         holes = hole_breakdown(golfer_id, cur_year)
-        print golfer.handicap
         #hcap = handicap(golfer_id, cur_year)
         #if hcap == 0:
             #hcap = golfer.def_handicap
             #Round.objects.all().filter(golfer_id=golfer).aggregate(Avg(score))
     except Golfer.DoesNotExist:
         raise Http404
-    return render_to_response('golf/golfer.html', {'golfer': golfer, 'avg_score': avgS, 'num_rds': numr,
-                                                   'points': total, 'holes': holes}, context)
+    return render_to_response('golf/golfer.html', {'golfer': golfer, 'points': total, 'holes': holes}, context)
 
 
 def course(request, course_id):
@@ -101,6 +97,14 @@ def about(request):
     context = RequestContext(request)
 
     return render_to_response('golf/about.html', context)
+
+
+def roster(request):
+    context = RequestContext(request)
+
+    roster_list = sorted(Golfer.objects.all(), key=lambda a: a.total_points)
+
+    return render_to_response('golf/roster.html', {'roster': roster_list},  context)
 
 
 def user_login(request):
@@ -193,6 +197,8 @@ def add_round(request):
 
 
 # Total functions follow. These are not views... Keep the views above this comment.
+##################################################################################
+##################################################################################
 
 def num_rds(g_id, year):
     # count the number of rounds for a golfer by year

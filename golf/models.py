@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.db.models import Avg
 import math
 
 
@@ -22,6 +23,33 @@ class Golfer(models.Model):
             total += r.points
 
         return total
+
+    @property
+    def avg_score(self):
+        # Returns golfer's average for the year
+        rounds = Round.objects.all().filter(date__year=datetime.now().year, golfer_id=self)
+        total = 0
+        count = 0
+        for r in rounds:
+            total += int(r.score)
+            count += 1
+        if not total or not count:
+            r_avg = 0
+        else:
+            r_avg = total / count
+
+        return r_avg
+
+    @property
+    def num_rds(self):
+        # count the number of rounds for a golfer by year
+        ##### THIS IS HOW WE AGGREGATE THINGS!
+        total = Round.objects.filter(date__year=datetime.now().year, golfer_id=self).count()
+
+        if total:
+            return total
+        else:
+            return 0
 
     def save(self):
         year = datetime.now().year

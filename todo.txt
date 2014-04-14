@@ -1,11 +1,5 @@
 Add:
 
-- Hole Breakdown w/ Handicap!!!!
-    - Sort list containing holescore, holepar and holehcp by holehcp. This will order the contents so that they can
-      be modified in the proper order.
-    - Setup a while loop where the iterator is equal to the Handicap
-    - While the iterator is greater than 0, modify the score of the next hole in the handicap. Once all 9 holes have been
-      modified, start back at the beginning (second iterator)
 - Test Handicap Calculation
 - More Views
     - Add YTD stats and last 10 rounds to Golfer view
