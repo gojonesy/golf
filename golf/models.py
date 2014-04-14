@@ -26,22 +26,32 @@ class Golfer(models.Model):
     def save(self):
         year = datetime.now().year
         scores = []
-        rounds = Round.objects.filter(golfer_id=self.pk).order_by('week_num')[:5]
-
+        rounds = Round.objects.filter(golfer_id=self.pk).order_by('week_num')
+        golfer = Golfer.objects.get(pk=self.pk)
         for r in rounds:
             if r.date.year == year:
                 c = Course.objects.get(name=r.course_id)
                 # Year is the same. Get the correct number of rounds
-                calc = ((r.score - c.rating) * 113) / c.slope
+                calc = (r.score - c.rating)
                 scores.append(calc)
 
-        if len(scores) == 5:
-            # get the lowest and multiply by .96 to get the handicap
-            lowest = min(float(i) for i in scores)
-            self.handicap = lowest * .96
+        scores.sort()
+
+        temp_h = []
+
+        if len(scores) % 2 == 0:
+            # Even number of rounds. Grab the lowest half
+            lowest = scores[:len(scores)/2]
         else:
-            # less than 5 rounds...Returning 0
-            self.handicap = self.def_handicap
+            # Odd number of rounds. Grab the lowest half, rounding up
+            lowest = scores[:len(scores)/2+1]
+
+        for s in lowest:
+            flt_s = float(s) * .96
+
+            temp_h.append(int(round(flt_s)))
+
+        self.handicap = sum(temp_h) / len(temp_h)
 
         super(Golfer, self).save()
 
@@ -106,26 +116,36 @@ class Round(models.Model):
     def save(self):
         year = datetime.now().year
         scores = []
-        rounds = Round.objects.filter(golfer_id=self.golfer_id).order_by('week_num')[:5]
+        rounds = Round.objects.filter(golfer_id=self.golfer_id).order_by('week_num')
         golfer = Golfer.objects.get(pk=self.golfer_id.id)
         for r in rounds:
             if r.date.year == year:
                 c = Course.objects.get(name=r.course_id)
                 # Year is the same. Get the correct number of rounds
-                calc = ((r.score - c.rating) * 113) / c.slope
+                calc = (r.score - c.rating)
                 scores.append(calc)
 
-        if len(scores) == 5:
-            # get the lowest and multiply by .96 to get the handicap
-            lowest = min(float(i) for i in scores)
-            golfer.handicap = lowest * .96
-            self.cur_handicap = golfer.handicap
-        else:
-            # less than 5 rounds...Returning 0
-            golfer.handicap = golfer.def_handicap
-            self.cur_handicap = golfer.handicap
+        scores.sort()
 
-        # print golfer.handicap
+        temp_h = []
+
+        if len(scores) % 2 == 0:
+            # Even number of rounds. Grab the lowest half
+            lowest = scores[:len(scores)/2]
+        else:
+            # Odd number of rounds. Grab the lowest half, rounding up
+            lowest = scores[:len(scores)/2+1]
+
+        for s in lowest:
+            flt_s = float(s) * .96
+            print "Pre convert: ", flt_s
+            print "Post convert: ", int(round(flt_s))
+            temp_h.append(int(round(flt_s)))
+            print temp_h
+
+        golfer.handicap = sum(temp_h) / len(temp_h)
+        self.cur_handicap = sum(temp_h) / len(temp_h)
+
         super(Round, self).save()
 
     @property

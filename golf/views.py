@@ -52,6 +52,7 @@ def golfer(request, golfer_id):
         numr = num_rds(golfer_id, cur_year)
         total = golfer.total_points
         holes = hole_breakdown(golfer_id, cur_year)
+        print golfer.handicap
         #hcap = handicap(golfer_id, cur_year)
         #if hcap == 0:
             #hcap = golfer.def_handicap
@@ -315,23 +316,34 @@ def handicap(g_id, year):
     # count the number of rounds for a golfer by year
     # r_total = 0
     scores = []
-    rounds = Round.objects.filter(golfer_id=g_id).order_by('week_num')[:5]
+    rounds = Round.objects.filter(golfer_id=g_id).order_by('week_num')
 
     for r in rounds:
         if r.date.year == year:
             c = Course.objects.get(name=r.course_id)
             # Year is the same. Get the correct number of rounds
-            calc = ((r.score - c.rating) * 113) / c.slope
+            calc = (r.score - c.rating)
             scores.append(calc)
 
+    scores.sort()
+
+    temp_h = []
     # Make sure we have 5 scores
-    if len(scores) == 5:
-        # get the lowest and multiply by .96 to get the handicap
-        lowest = min(float(i) for i in scores)
-        handicap = lowest * .96
+    if len(scores) % 2 == 0:
+        # Even number of rounds. Grab the lowest half
+        lowest = scores[:len(scores)/2]
     else:
-        # less than 5 rounds...Returning 0
-        handicap = 0.0
+        # Odd number of rounds. Grab the lowest half, rounding up
+        lowest = scores[:len(scores)/2+1]
+
+    for s in lowest:
+            flt_s = float(s) * .96
+            print "Pre convert: ", flt_s
+            print "Post convert: ", int(flt_s)
+            temp_h.append(int(flt_s))
+
+    handicap = sum(temp_h) / len(temp_h)
+
 
     return handicap
 
