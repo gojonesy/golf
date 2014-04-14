@@ -55,7 +55,7 @@ class Golfer(models.Model):
         year = datetime.now().year
         scores = []
         rounds = Round.objects.filter(golfer_id=self.pk).order_by('week_num')
-        golfer = Golfer.objects.get(pk=self.pk)
+        # golfer = Golfer.objects.get(self)
         for r in rounds:
             if r.date.year == year:
                 c = Course.objects.get(name=r.course_id)
@@ -78,8 +78,10 @@ class Golfer(models.Model):
             flt_s = float(s) * .96
 
             temp_h.append(int(round(flt_s)))
-
-        self.handicap = sum(temp_h) / len(temp_h)
+        if not temp_h:
+            self.handicap = self.def_handicap
+        else:
+            self.handicap = sum(temp_h) / len(temp_h)
 
         super(Golfer, self).save()
 
