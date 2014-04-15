@@ -3,7 +3,8 @@ from golf.models import Golfer, Course, Round
 
 
 class GolferForm(forms.ModelForm):
-    name = forms.CharField(max_length=128, help_text="Golfer's Name.")
+    last_name = forms.CharField(max_length=128, help_text="Last Name.")
+    first_name = forms.CharField(max_length=128, help_text="First Nam.")
     email = forms.CharField(max_length=128, help_text="Email Address.", required=False)
     phone = forms.CharField(max_length=12, help_text="Phone Number.", required=False)
     phone_alt = forms.CharField(max_length=12, help_text="Alternate Phone", required=False)
