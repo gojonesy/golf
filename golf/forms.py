@@ -4,12 +4,13 @@ from golf.models import Golfer, Course, Round
 
 class GolferForm(forms.ModelForm):
     last_name = forms.CharField(max_length=128, help_text="Last Name.")
-    first_name = forms.CharField(max_length=128, help_text="First Nam.")
+    first_name = forms.CharField(max_length=128, help_text="First Name.")
     email = forms.CharField(max_length=128, help_text="Email Address.", required=False)
     phone = forms.CharField(max_length=12, help_text="Phone Number.", required=False)
     phone_alt = forms.CharField(max_length=12, help_text="Alternate Phone", required=False)
     def_handicap = forms.IntegerField(help_text="Starting Handicap.")
     handicap = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+
     class Meta:
         model = Golfer
 
@@ -42,8 +43,8 @@ class CourseForm(forms.ModelForm):
 
 
 class RoundForm(forms.ModelForm):
-    golfer_id = forms.ModelChoiceField(queryset=Golfer.objects.all().order_by('name'), empty_label="(Select a golfer...)",
-                                       help_text="Golfer")
+    golfer_id = forms.ModelChoiceField(queryset=Golfer.objects.all().order_by('last_name'),
+                                       empty_label="(Select a golfer...)", help_text="Golfer")
     course_id = forms.ModelChoiceField(queryset=Course.objects.all().order_by('name'), help_text="Course",
                                        empty_label="(Select a course...)")
     date = forms.DateField(help_text="Date")

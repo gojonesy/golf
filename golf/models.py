@@ -5,8 +5,8 @@ import math
 
 
 class Golfer(models.Model):
-    last_name = models.CharField(max_length=128, null=True, blank=True, default="test")
-    first_name = models.CharField(max_length=128, null=True, blank=True, default="test")
+    last_name = models.CharField(max_length=128, null=True, blank=True)
+    first_name = models.CharField(max_length=128, null=True, blank=True)
     email = models.CharField(max_length=128, null=True, blank=True, default="test")
     phone = models.CharField(max_length=128, null=True, blank=True)
     phone_alt = models.CharField(max_length=128, null=True, blank=True)
