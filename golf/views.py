@@ -35,9 +35,7 @@ def index(request):
 
         table_dict[g.id] = {'points': points_list}
 
-    round_list = Round.objects.order_by('-date')[:10]
-
-    context_dict = {'golfers': golfer_list, 'rounds': round_list, 'nums': nums, 'table': table_dict}
+    context_dict = {'golfers': golfer_list, 'nums': nums, 'table': table_dict}
 
     return render_to_response('golf/index.html', context_dict, context)
 
@@ -45,9 +43,10 @@ def golfer(request, golfer_id):
     context = RequestContext(request)
     # Get the current year and pass it to the avg_score function
     cur_year = datetime.now().year
-
+    round_list = Round.objects.filter(golfer_id=golfer_id).order_by('date')
     try:
         golfer = Golfer.objects.get(pk=golfer_id)
+        print "Golfer Handicap", golfer.handicap
         total = golfer.total_points
         holes = hole_breakdown(golfer_id, cur_year)
         #hcap = handicap(golfer_id, cur_year)
@@ -56,7 +55,7 @@ def golfer(request, golfer_id):
             #Round.objects.all().filter(golfer_id=golfer).aggregate(Avg(score))
     except Golfer.DoesNotExist:
         raise Http404
-    return render_to_response('golf/golfer.html', {'golfer': golfer, 'points': total, 'holes': holes}, context)
+    return render_to_response('golf/golfer.html', {'golfer': golfer, 'points': total, 'holes': holes, 'rounds': round_list}, context)
 
 
 def course(request, course_id):
@@ -102,7 +101,7 @@ def about(request):
 def roster(request):
     context = RequestContext(request)
 
-    roster_list = sorted(Golfer.objects.all(), key=lambda a: a.total_points, reverse=True)
+    roster_list = Golfer.objects.order_by('last_name')
 
     return render_to_response('golf/roster.html', {'roster': roster_list},  context)
 

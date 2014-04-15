@@ -1,9 +1,7 @@
 Add:
 
-- Test Handicap Calculation
-- More Views
-    - Add YTD stats and last 10 rounds to Golfer view
-    - All Golfers YTD Stats View
-    - Round view
-    - ALl Rounds view
-    -
+- Adjusted Hole breakdowns with handicap
+
+- Sign In Sheet (Excel)
+- Roster as a table view only
+-

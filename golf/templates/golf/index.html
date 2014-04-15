@@ -39,30 +39,6 @@
             </div>
             </div>
         <!-- /span -->
-            <div class="row_fluid">
 
-            <div class="span12">
-                <h2>Last 10 Recorded Rounds</h2>
-                {% if rounds %}
-                     <table class="table table-striped table-bordered table-condensed">
-                        <th>Golfer</th><th>Course</th><th>Date</th><th>Week</th><th>Hole 1</th><th>Hole 2</th><th>Hole 3</th><th>Hole 4</th>
-                        <th>Hole 5</th><th>Hole 6</th><th>Hole 7</th><th>Hole 8</th><th>Hole 9</th><th>Score</th><th>Points</th>
-                    {% for r in rounds %}
-                        <tr>
-                            <td>{{ r.golfer_id }}</td><td>{{ r.course_id }}</td><td>{{ r.date|date:"m/d/Y" }}</td><td>{{ r.week_num }}</td>
-                            <td>{{ r.hole_1 }}</td><td>{{ r.hole_2 }}</td><td>{{ r.hole_3 }}</td><td>{{ r.hole_4 }}</td>
-                            <td>{{ r.hole_5 }}</td><td>{{ r.hole_6 }}</td><td>{{ r.hole_7 }}</td><td>{{ r.hole_8 }}</td><td>{{ r.hole_9 }}</td>
-                            <td>{{ r.score }}</td>
-                            <td>{{ r.points }}</td>
-                        </tr>
-                    {% endfor %}
-                     </table>
-                {% else %}
-                    <strong>There are no rounds present</strong>
-                {% endif %}
-            </div>
-            <!-- /span -->
-		</div>
-        <!-- /row -->
 {% endblock %}
 
