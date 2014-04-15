@@ -5,7 +5,6 @@ import math
 
 
 class Golfer(models.Model):
-    name = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128, null=True, blank=True, default="test")
     first_name = models.CharField(max_length=128, null=True, blank=True, default="test")
     email = models.CharField(max_length=128, null=True, blank=True, default="test")
@@ -26,11 +25,11 @@ class Golfer(models.Model):
 
         return total
 
-    # @property
-    # def name(self):
-    #     full_name = self.first_name + self.last_name
-    #
-    #     return full_name
+    @property
+    def name(self):
+        full_name = self.first_name, " ", self.last_name
+
+        return full_name
 
     @property
     def adj_points(self):
