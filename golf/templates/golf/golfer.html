@@ -3,25 +3,47 @@
 {% block body_block %}
         <div class="hero-unit">
             <h1>Bell Monday Night Men's Golf League - 2014</h1>
-
+        <div class="container">
             <div class="row-fluid">
                 <div class="span12">
                 {% if golfer %}
                 <h2>{{ golfer }}</h2>
                 <ul>
-                    <li>Email: {{ golfer.email }}</li>
+                    <li>Email: <a href="mailto: {{ golfer.email }}">{{ golfer.email }}</a></li>
                     <li>Phone: {{ golfer.phone }}</li>
                     <li>Alt Phone: {{ golfer.phone_alt }}</li>
-                    <li>Average Score: {{ golfer.avg_score }}</li>
-                    <li>Number of Rounds: {{ golfer.num_rds }}</li>
-                    <li>Adjusted Points: {{ golfer.adj_points }} </li>
-                    <li>Pars: {{ holes.0 }}</li>
-                    <li>Birdies: {{ holes.1 }}</li>
-                    <li>Eagles: {{ holes.2 }}</li>
-                    <li>Bogies: {{ holes.3 }}</li>
-                    <li>Other: {{ holes.4 }}</li>
-                    <li>Handicap: {{ golfer.handicap }}</li>
                 </ul>
+                    <h3>Totals</h3>
+                    <table class="table table-striped table-bordered table-condensed">
+                        <tr>
+                            <th>Avg. Score</th><th># of Rounds</th><th>Adj. Points</th><th>Handicap</th>
+                        </tr>
+                        <tr>
+                            <td>{{ golfer.avg_score }}</td><td>{{ golfer.num_rds }}</td><td>{{ golfer.adj_points }}</td>
+                            <td>{{ golfer.handicap }}</td>
+                        </tr>
+                    </table>
+                    <h3>Adjusted Hole Breakdown</h3>
+                    <table class="table table-striped table-bordered table-condensed">
+                        <tr>
+                            <th>Eagles</th><th>Birdies</th><th>Pars</th><th>Bogies</th><th>Others</th>
+                        </tr>
+                        <tr>
+                            <td>{{ adj_holes.2 }}</td><td>{{ adj_holes.1 }}</td><td>{{ adj_holes.0 }}</td>
+                            <td>{{ adj_holes.3 }}</td><td>{{ adj_holes.4 }}</td>
+                        </tr>
+                    </table>
+                    <h3>Actual Hole Breakdown</h3>
+                    <table class="table table-striped table-bordered table-condensed">
+                        <tr>
+                            <th>Eagles</th><th>Birdies</th><th>Pars</th><th>Bogies</th><th>Others</th>
+                        </tr>
+                        <tr>
+                            <td>{{ def_holes.2 }}</td><td>{{ def_holes.1 }}</td><td>{{ def_holes.0 }}</td>
+                            <td>{{ def_holes.3 }}</td><td>{{ def_holes.4 }}</td>
+                        </tr>
+                    </table>
+
                 {% else %}
                     Golfer not found.
                 {% endif %}
@@ -48,6 +70,7 @@
             <!-- /span -->
 		</div>
     </div>
+</div>
         <!-- /row -->
 
 {% endblock %}

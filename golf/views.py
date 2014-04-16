@@ -46,16 +46,14 @@ def golfer(request, golfer_id):
     round_list = Round.objects.filter(golfer_id=golfer_id).order_by('date')
     try:
         golfer = Golfer.objects.get(pk=golfer_id)
-        print "Golfer Handicap", golfer.handicap
         total = golfer.total_points
         holes = hole_breakdown(golfer_id, cur_year)
-        #hcap = handicap(golfer_id, cur_year)
-        #if hcap == 0:
-            #hcap = golfer.def_handicap
-            #Round.objects.all().filter(golfer_id=golfer).aggregate(Avg(score))
+        def_holes = holes[0]
+        adj_holes = holes[1]
     except Golfer.DoesNotExist:
         raise Http404
-    return render_to_response('golf/golfer.html', {'golfer': golfer, 'points': total, 'holes': holes, 'rounds': round_list}, context)
+    return render_to_response('golf/golfer.html', {'golfer': golfer, 'def_holes': def_holes, 'adj_holes': adj_holes,
+                                                   'rounds': round_list}, context)
 
 
 def course(request, course_id):
@@ -199,57 +197,16 @@ def add_round(request):
 ##################################################################################
 ##################################################################################
 
-def num_rds(g_id, year):
-    # count the number of rounds for a golfer by year
-    ##### THIS IS HOW WE AGGREGATE THINGS!
-    total = Round.objects.filter(date__year=year, golfer_id=g_id).count()
-    # annotate(total_rounds=Count('golfer_id'))
-    print total
-    if total:
-        return total
-    else:
-        return 0
-
-def avg_score(g_id, year):
-    # Returns golfer's average for the year
-    rounds = Round.objects.all().filter(date__year=year, golfer_id=g_id)
-    total = 0
-    count = 0
-    for r in rounds:
-        total += int(r.score)
-        count += 1
-    if not total or not count:
-        r_avg = 0
-    else:
-        r_avg = total / count
-    return r_avg
-
-
-def avg_points(g_id, year):
-    # calculate golfer's average here
-    # golfer = Golfer.objects.get(pk=golfer_id)
-    rounds = Round.objects.all().filter(date__year=year, golfer_id=g_id)
-
-    total = 0
-    count = 0
-    for r in rounds:
-
-        total += int(r.points)
-        count += 1
-    if not total or not count:
-        p_avg = 0
-    else:
-        p_avg = total / count
-    return p_avg
-
 def hole_breakdown(g_id, year):
     # return the number of eagles, birdies, pars, bogies and other scores
-    eagl, bird, par, bogy, othr = 0, 0, 0, 0, 0
+    eagl, bird, par, bogy, othr, a_par, a_bird, a_eagl, a_bogy, a_othr = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     rounds = Round.objects.all().filter(date__year=year, golfer_id=g_id)
 
     for r in rounds:
         c = Course.objects.get(name=r.course_id)
-
+        adj = [[r.adj_scores[0], c.hole1par], [r.adj_scores[1], c.hole2par], [r.adj_scores[2], c.hole3par],
+               [r.adj_scores[3], c.hole4par], [r.adj_scores[4], c.hole5par], [r.adj_scores[5], c.hole6par],
+               [r.adj_scores[6], c.hole7par], [r.adj_scores[7], c.hole8par], [r.adj_scores[8], c.hole9par],]
         scores = [[r.hole_1, c.hole1par], [r.hole_2, c.hole2par], [r.hole_3, c.hole3par], [r.hole_4, c.hole4par],
                   [r.hole_5, c.hole5par], [r.hole_6, c.hole6par], [r.hole_7, c.hole7par], [r.hole_8, c.hole8par],
                   [r.hole_9, c.hole9par]]
@@ -261,30 +218,17 @@ def hole_breakdown(g_id, year):
             bogy += bogy_check(i[0], i[1])
             othr += othr_check(i[0], i[1])
 
-    value_list = [par, bird, eagl, bogy, othr]
-    return value_list
+        for a in adj:
+            a_par += par_check(a[0], a[1])
+            a_bird += bird_check(a[0], a[1])
+            a_eagl += eagl_check(a[0], a[1])
+            a_bogy += bogy_check(a[0], a[1])
+            a_othr += othr_check(a[0], a[1])
 
-def points_calc(g_id, year, week):
-    hole_break = {}
-    r = Round.objects.get(golfer_id=g_id, week_num=week, date__year=year)
-    c = Course.objects.get(name=r.course_id)
-    scores = [[r.hole_1, c.hole1par], [r.hole_2, c.hole2par], [r.hole_3, c.hole3par], [r.hole_4, c.hole4par],
-                      [r.hole_5, c.hole5par], [r.hole_6, c.hole6par], [r.hole_7, c.hole7par], [r.hole_8, c.hole8par],
-                      [r.hole_9, c.hole9par]]
-    points = 0.0
+    hole_break = [par, bird, eagl, bogy, othr]
+    adj_break = [a_par, a_bird, a_eagl, a_bogy, a_othr]
+    return hole_break, adj_break
 
-    for s in scores:
-        hole_break['Par'] = par_check(s[0], s[1])
-        hole_break['Birdie'] = bird_check(s[0], s[1])
-        hole_break['Eagle'] = eagl_check(s[0], s[1])
-        hole_break['Bogey'] = bogy_check(s[0], s[1])
-        hole_break['Other'] = othr_check(s[0], s[1])
-
-    points += hole_break['Par'] * .5
-    points += hole_break['Birdie'] * 1
-    points += hole_break['Eagle'] * 1
-
-    return points
 
 def par_check(hole, hole_par):
     if hole - hole_par == 0:
@@ -292,11 +236,13 @@ def par_check(hole, hole_par):
     else:
         return 0
 
+
 def bird_check(hole, hole_par):
     if hole - hole_par == -1:
         return 1
     else:
         return 0
+
 
 def eagl_check(hole, hole_par):
     if hole - hole_par == -2:
@@ -304,52 +250,16 @@ def eagl_check(hole, hole_par):
     else:
         return 0
 
+
 def bogy_check(hole, hole_par):
     if hole - hole_par == 1:
         return 1
     else:
         return 0
 
+
 def othr_check(hole, hole_par):
     if hole - hole_par > 1:
         return 1
     else:
         return 0
-
-def handicap(g_id, year):
-    # Calculates a golfer's handicap based on rounds
-    # count the number of rounds for a golfer by year
-    # r_total = 0
-    scores = []
-    rounds = Round.objects.filter(golfer_id=g_id).order_by('week_num')
-
-    for r in rounds:
-        if r.date.year == year:
-            c = Course.objects.get(name=r.course_id)
-            # Year is the same. Get the correct number of rounds
-            calc = (r.score - c.rating)
-            scores.append(calc)
-
-    scores.sort()
-
-    temp_h = []
-    # Make sure we have 5 scores
-    if len(scores) % 2 == 0:
-        # Even number of rounds. Grab the lowest half
-        lowest = scores[:len(scores)/2]
-    else:
-        # Odd number of rounds. Grab the lowest half, rounding up
-        lowest = scores[:len(scores)/2+1]
-
-    for s in lowest:
-            flt_s = float(s) * .96
-            print "Pre convert: ", flt_s
-            print "Post convert: ", int(flt_s)
-            temp_h.append(int(flt_s))
-
-    handicap = sum(temp_h) / len(temp_h)
-
-
-    return handicap
-
-

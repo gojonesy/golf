@@ -12,7 +12,7 @@ env/
 bin/
 venv/
 build/
-.idea/
+.idea/*
 develop-eggs/
 dist/
 eggs/
