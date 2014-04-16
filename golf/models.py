@@ -175,7 +175,7 @@ class Round(models.Model):
             if r.date.year == year:
                 c = Course.objects.get(name=r.course_id)
                 # Year is the same. Get the correct number of rounds
-                calc = (r.score - c.rating)
+                calc = float(r.score - c.rating)
                 scores.append(calc)
 
         scores.sort()
@@ -189,18 +189,20 @@ class Round(models.Model):
             # Odd number of rounds. Grab the lowest half, rounding up
             lowest = scores[:len(scores)/2+1]
 
-        for s in lowest:
-            flt_s = float(s) * .96
-            print "Pre convert: ", flt_s
-            print "Post convert: ", int(round(flt_s))
-            temp_h.append(int(round(flt_s)))
+        # for s in lowest:
+        #     print s
+        #     diff = round(s) * .96
+        #     print "Pre convert: ", diff
+        #     print "Post convert: ", int(round(diff))
+        #     temp_h.append(int(round(diff)))
 
-        if not temp_h:
+        if not lowest:
             golfer.def_handicap = self.cur_handicap
         else:
             print "Current Golfer Handicap: ", golfer.handicap
-            #self.cur_handicap = sum(temp_h) / len(temp_h)
-            golfer.handicap = round(float(sum(temp_h)) / float(len(temp_h)))
+            diffs = sum(lowest) * .96
+            print "Diffs: ", diffs
+            golfer.handicap = round(diffs / float(len(lowest)))
             print golfer.handicap
             golfer.save()
             print "New Golfer Handicap: ", golfer.handicap

@@ -44,16 +44,25 @@
       <file leaf-file-name="todo.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="216">
+            <state line="6" column="18" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="golfer.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/golf/templates/golf/golfer.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="97" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.703125" vertical-offset="0" max-vertical-offset="1062">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="203" column="33" selection-start="6968" selection-end="6968" vertical-scroll-proportion="0.843987" vertical-offset="2875" max-vertical-offset="5598">
+            <state line="206" column="25" selection-start="7028" selection-end="7028" vertical-scroll-proportion="0.0" vertical-offset="3235" max-vertical-offset="5634">
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -64,7 +73,7 @@
       <file leaf-file-name="add_round.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="41" selection-start="1662" selection-end="1671" vertical-scroll-proportion="0.0" vertical-offset="434" max-vertical-offset="1494">
+            <state line="38" column="41" selection-start="1662" selection-end="1671" vertical-scroll-proportion="-9.259259" vertical-offset="434" max-vertical-offset="1494">
               <folding />
             </state>
           </provider>
@@ -91,15 +100,15 @@
         <option value="$PROJECT_DIR$/golf/templates/golf/rounds.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/courses.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/round.html" />
-        <option value="$PROJECT_DIR$/golf/templates/golf/golfer.html" />
-        <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/golf/urls.py" />
         <option value="$PROJECT_DIR$/golf/templates/golf/base.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/roster.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/index.html" />
         <option value="$PROJECT_DIR$/golf/views.py" />
         <option value="$PROJECT_DIR$/golf/forms.py" />
+        <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/golf/models.py" />
+        <option value="$PROJECT_DIR$/golf/templates/golf/golfer.html" />
       </list>
     </option>
   </component>
@@ -197,6 +206,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -609,11 +622,6 @@
         <state line="29" column="37" selection-start="1693" selection-end="1693" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="972" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/golf/templates/golf/golfer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="59" selection-start="614" selection-end="614" vertical-scroll-proportion="0.28125" vertical-offset="0" max-vertical-offset="896" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/rounds.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="666" />
@@ -632,20 +640,6 @@
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/roster.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="26" selection-start="153" selection-end="153" vertical-scroll-proportion="0.09060403" vertical-offset="0" max-vertical-offset="596" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="41" selection-start="1662" selection-end="1671" vertical-scroll-proportion="0.0" vertical-offset="434" max-vertical-offset="1494">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="216">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/forms.py">
@@ -669,12 +663,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="18" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="41" selection-start="1662" selection-end="1671" vertical-scroll-proportion="-9.259259" vertical-offset="434" max-vertical-offset="1494">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/golf/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="33" selection-start="6968" selection-end="6968" vertical-scroll-proportion="0.843987" vertical-offset="2875" max-vertical-offset="5598">
+        <state line="206" column="25" selection-start="7028" selection-end="7028" vertical-scroll-proportion="0.0" vertical-offset="3235" max-vertical-offset="5634">
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/templates/golf/golfer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="97" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.703125" vertical-offset="0" max-vertical-offset="1062">
+          <folding />
         </state>
       </provider>
     </entry>
