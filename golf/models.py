@@ -200,7 +200,8 @@ class Round(models.Model):
         else:
             print "Current Golfer Handicap: ", golfer.handicap
             #self.cur_handicap = sum(temp_h) / len(temp_h)
-            golfer.handicap = sum(temp_h) / len(temp_h)
+            golfer.handicap = round(float(sum(temp_h)) / float(len(temp_h)))
+            print golfer.handicap
             golfer.save()
             print "New Golfer Handicap: ", golfer.handicap
         # self.cur_handicap = sum(temp_h) / len(temp_h)
