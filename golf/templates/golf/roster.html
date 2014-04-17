@@ -1,14 +1,15 @@
 <h1>Weekly Roster</h1>
                 {% if roster %}
                      <table border="2" cellpadding="5" cellspacing="5">
-                        <th><h1>Golfer</h1></th><th><h1>Handicap</h1></th>
+                        <th><h1>Golfer</h1></th><th><h1>Handicap</h1></th><th><h1>Sign In</h1></th>
                     {% for r in roster %}
                         <tr>
                             <td><h2>{{ r.name }}</h2></td>
                             <td align="center"><h2>{{ r.handicap }}</h2></td>
+                            <td>_________________________________________________________________________</td>
                         </tr>
                     {% endfor %}
                      </table>
                 {% else %}
-                    <strong>There are no courses present</strong>
+                    <strong>There are no golfers present</strong>
                 {% endif %}

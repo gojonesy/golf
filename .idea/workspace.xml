@@ -26,11 +26,8 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="51" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="4266">
-              <folding>
-                <element signature="e#521#558#0" expanded="false" />
-                <element signature="e#584#1364#0" expanded="false" />
-              </folding>
+            <state line="55" column="51" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="4878">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -38,7 +35,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/templates/golf/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="24" selection-start="334" selection-end="425" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="900">
+            <state line="11" column="24" selection-start="334" selection-end="425" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="900">
               <folding />
             </state>
           </provider>
@@ -47,34 +44,7 @@
       <file leaf-file-name="golfer.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/templates/golf/golfer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="86" selection-start="433" selection-end="433" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="1476">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/golf/templates/golf/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="81" selection-start="1675" selection-end="1675" vertical-scroll-proportion="-21.333334" vertical-offset="0" max-vertical-offset="1332">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="744" column="2" selection-start="10672" selection-end="10672" vertical-scroll-proportion="0.36756125" vertical-offset="13077" max-vertical-offset="111114">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="unused_functions.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/golf/unused_functions.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="19" selection-start="2990" selection-end="2990" vertical-scroll-proportion="0.0" vertical-offset="877" max-vertical-offset="1872">
+            <state line="11" column="86" selection-start="433" selection-end="433" vertical-scroll-proportion="-0.0" vertical-offset="198" max-vertical-offset="1476">
               <folding />
             </state>
           </provider>
@@ -83,19 +53,17 @@
       <file leaf-file-name="todo.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
+            <state line="1" column="0" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/golf/models.py">
+      <file leaf-file-name="roster.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/golf/templates/golf/roster.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="206" column="25" selection-start="7028" selection-end="7028" vertical-scroll-proportion="0.0" vertical-offset="3739" max-vertical-offset="5634">
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state line="15" column="0" selection-start="760" selection-end="760" vertical-scroll-proportion="0.30751708" vertical-offset="0" max-vertical-offset="878">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -123,22 +91,21 @@
         <option value="$PROJECT_DIR$/golf/templates/golf/round.html" />
         <option value="$PROJECT_DIR$/golf/urls.py" />
         <option value="$PROJECT_DIR$/golf/templates/golf/base.html" />
-        <option value="$PROJECT_DIR$/golf/templates/golf/roster.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/index.html" />
         <option value="$PROJECT_DIR$/golf/forms.py" />
         <option value="$PROJECT_DIR$/golf/models.py" />
-        <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/golf/unused_functions.txt" />
         <option value="$PROJECT_DIR$/golf/views.py" />
         <option value="$PROJECT_DIR$/golf/templates/golf/golfer.html" />
+        <option value="$PROJECT_DIR$/todo.txt" />
+        <option value="$PROJECT_DIR$/golf/templates/golf/roster.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
-    <option name="y" value="24" />
-    <option name="width" value="1617" />
-    <option name="height" value="1027" />
+    <option name="x" value="-1" />
+    <option name="width" value="1682" />
+    <option name="height" value="1023" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -417,14 +384,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="24" width="1617" height="1027" extended-state="7" />
-    <editor active="false" />
+    <frame x="-1" y="0" width="1682" height="1023" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14922601" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14345238" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -468,9 +435,7 @@
     <entry file="file://$PROJECT_DIR$/golf/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="45" selection-start="1256" selection-end="1256" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1908">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -482,10 +447,7 @@
     <entry file="file://$PROJECT_DIR$/golf/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="41" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5904">
-          <folding>
-            <element signature="e#521#558#0" expanded="false" />
-            <element signature="e#584#1364#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -524,10 +486,7 @@
     <entry file="file://$PROJECT_DIR$/golf/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="41" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5868">
-          <folding>
-            <element signature="e#521#558#0" expanded="false" />
-            <element signature="e#584#1364#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -566,10 +525,7 @@
     <entry file="file://$PROJECT_DIR$/golf/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="25" selection-start="3948" selection-end="3948" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5814">
-          <folding>
-            <element signature="e#521#558#0" expanded="false" />
-            <element signature="e#584#1364#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -616,10 +572,7 @@
     <entry file="file://$PROJECT_DIR$/golf/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="131" column="0" selection-start="4163" selection-end="4163" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="5778">
-          <folding>
-            <element signature="e#521#558#0" expanded="false" />
-            <element signature="e#584#1364#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -680,96 +633,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="70" selection-start="250" selection-end="250" vertical-scroll-proportion="0.097508125" vertical-offset="0" max-vertical-offset="1260">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
-          <folding />
-        </state>
+        <state line="6" column="70" selection-start="250" selection-end="250" vertical-scroll-proportion="0.097508125" vertical-offset="0" max-vertical-offset="1260" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="41" selection-start="1662" selection-end="1671" vertical-scroll-proportion="0.27901787" vertical-offset="434" max-vertical-offset="1494">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/golf/unused_functions.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="19" selection-start="2990" selection-end="2990" vertical-scroll-proportion="0.0" vertical-offset="877" max-vertical-offset="1872">
-          <folding />
-        </state>
+        <state line="38" column="41" selection-start="1662" selection-end="1671" vertical-scroll-proportion="0.27901787" vertical-offset="434" max-vertical-offset="1494" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/round.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="37" selection-start="1693" selection-end="1693" vertical-scroll-proportion="0.5223214" vertical-offset="54" max-vertical-offset="972">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/golf/templates/golf/roster.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="26" selection-start="153" selection-end="153" vertical-scroll-proportion="0.06026786" vertical-offset="0" max-vertical-offset="896">
-          <folding />
-        </state>
+        <state line="29" column="37" selection-start="1693" selection-end="1693" vertical-scroll-proportion="0.5223214" vertical-offset="54" max-vertical-offset="972" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/courses.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="73" selection-start="413" selection-end="413" vertical-scroll-proportion="0.24107143" vertical-offset="0" max-vertical-offset="896">
-          <folding />
-        </state>
+        <state line="12" column="73" selection-start="413" selection-end="413" vertical-scroll-proportion="0.24107143" vertical-offset="0" max-vertical-offset="896" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="24" selection-start="334" selection-end="425" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="900">
+        <state line="11" column="24" selection-start="334" selection-end="425" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="900">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/golf/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="25" selection-start="7028" selection-end="7028" vertical-scroll-proportion="0.0" vertical-offset="3235" max-vertical-offset="5634">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="51" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="4266">
-          <folding>
-            <element signature="e#521#558#0" expanded="false" />
-            <element signature="e#584#1364#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/golf/templates/golf/golfer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="86" selection-start="433" selection-end="433" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="1476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/golf/templates/golf/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="81" selection-start="1675" selection-end="1675" vertical-scroll-proportion="-21.333334" vertical-offset="0" max-vertical-offset="1332">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="744" column="2" selection-start="10672" selection-end="10672" vertical-scroll-proportion="0.36756125" vertical-offset="13077" max-vertical-offset="111114">
+        <state line="744" column="2" selection-start="10672" selection-end="10672" vertical-scroll-proportion="0.3515625" vertical-offset="13077" max-vertical-offset="111114">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/unused_functions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="19" selection-start="2990" selection-end="2990" vertical-scroll-proportion="0.9757976" vertical-offset="877" max-vertical-offset="1872">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/templates/golf/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="81" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.14350797" vertical-offset="450" max-vertical-offset="1332">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/templates/golf/golfer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="86" selection-start="433" selection-end="433" vertical-scroll-proportion="-0.0" vertical-offset="198" max-vertical-offset="1476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="25" selection-start="7028" selection-end="7028" vertical-scroll-proportion="-0.09392265" vertical-offset="3739" max-vertical-offset="5580">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/templates/golf/roster.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="760" selection-end="760" vertical-scroll-proportion="0.30751708" vertical-offset="0" max-vertical-offset="878">
           <folding />
         </state>
       </provider>

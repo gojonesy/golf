@@ -1,5 +1,1 @@
 Add:
-
-- Adjusted Hole breakdowns with handicap
-
-- Sign In Sheet (Excel)
