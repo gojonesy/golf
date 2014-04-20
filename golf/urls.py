@@ -16,4 +16,5 @@ urlpatterns = patterns('',
                        url(r'^logout/$', views.user_logout, name='logout'),
                        url(r'^about/$', views.about, name='about'),
                        url(r'^skins/$', views.skins, name='skins'),
+                       url(r'^rules/$', views.rules, name='rules'),
                        )

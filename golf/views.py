@@ -98,6 +98,11 @@ def about(request):
     return render_to_response('golf/about.html', context)
 
 
+def rules(request):
+    context = RequestContext(request)
+
+    return render_to_response('golf/rules.html', context)
+
 def roster(request):
     context = RequestContext(request)
 
