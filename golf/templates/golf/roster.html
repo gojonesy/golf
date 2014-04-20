@@ -1,23 +1,46 @@
 <html>
     <head>
-        <style>
-            body, html { margin:0; padding:0; color: #000; background:#a7a09a; }
-            #wrap { width:800px; margin:0 auto; background:#99c; }
+        <style type="text/css">
+            body, html { margin:0; padding:0; color: #000;  }
+            #wrap { width:800px; margin:0 auto;  }
             #header { background: #ddd; }
-            #left { float: left; width: 300px; background: #9c9; }
-            #right { float: right: width: 300px; background: #c9c; }</style>
+            #left { float: left; width: 350px; }
+            #right { float: right: width: 250px; }
+            table.gridtable {
+                            font-family: verdana,arial,sans-serif;
+                            font-size:11px;
+                            color:#333333;
+                            border-width: 1px;
+                            border-color: #666666;
+                            border-collapse: collapse;
+                        }
+                        table.gridtable th {
+                            border-width: 1px;
+                            padding: 8px;
+                            border-style: solid;
+                            border-color: #666666;
+                            background-color: #dedede;
+                        }
+                        table.gridtable td {
+                            border-width: 1px;
+                            padding: 8px;
+                            border-style: solid;
+                            border-color: #666666;
+                            background-color: #ffffff;
+                        }
+        </style>
     </head>
     <body>
         <div id="wrap">
             <div id="header"><h1>Weekly Roster</h1></div>
             <div id="left">
                 {% if roster %}
-                     <table>
+                     <table class="gridtable">
                         <th><h1>Golfer</h1></th><th><h1>Handicap</h1></th>
                     {% for r in roster %}
                         <tr>
                             <td><h2>{{ r.name }}</h2></td>
-                            <td align="center"><h2>{{ r.handicap }}</h2></td>
+                            <td><h2>{{ r.handicap }}</h2></td>
                         </tr>
                     {% endfor %}
                 {% else %}
@@ -26,18 +49,15 @@
                      </table>
             </div>
             <div id="right">
-                 <table>
-                        <tr><td><h1>Sign in</h1></td></tr>
-                        {% for r in roster %}
-                        <tr><td></td></tr>
+                 <table class="gridtable">
+                        <col width="250px"/>
+                        <th><h1>Sign in</h1></th>
+                        {% for n in nums %}
+                        <tr><td><h2>{{ n }}.&nbsp;</h2></td></tr>
                         {% endfor %}
                 </table>
             </div>
         </div>
-
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 
     </body>
 </html>

@@ -100,8 +100,11 @@ def roster(request):
     context = RequestContext(request)
 
     roster_list = Golfer.objects.order_by('last_name')
+    nums = []
+    for i in range(1, (len(roster_list) + 1)):
+        nums.append(i)
 
-    return render_to_response('golf/roster.html', {'roster': roster_list},  context)
+    return render_to_response('golf/roster.html', {'roster': roster_list, 'nums': nums},  context)
 
 
 def user_login(request):
