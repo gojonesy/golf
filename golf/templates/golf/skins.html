@@ -1,0 +1,17 @@
+{% extends 'golf/base.html' %}
+{% block head_block %}
+{% endblock %}
+{% block body_block %}
+<div class="hero-unit">
+    <h1>Bell Monday Night Men's Golf League - 2014</h1>
+</div>
+<div class="container">
+     <h3>View skins game results for week:</h3>
+        <select onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+            <option selected>Select...</option>
+            {% for w in weeks %}
+                <option value="../rounds/{{ w }}">{{ w }}</option>
+            {% endfor %}
+        </select>
+</div>
+{% endblock %}

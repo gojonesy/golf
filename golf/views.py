@@ -22,7 +22,6 @@ def index(request):
 
     nums = []
 
-    weeks = Round.objects.values_list('week_num', flat=True).distinct().order_by('week_num')
     for i in range(1, 19):
         nums.append(i)
 
@@ -37,7 +36,7 @@ def index(request):
 
         table_dict[g.id] = {'points': points_list}
 
-    context_dict = {'golfers': golfer_list, 'nums': nums, 'table': table_dict, 'weeks': weeks}
+    context_dict = {'golfers': golfer_list, 'nums': nums, 'table': table_dict}
 
     return render_to_response('golf/index.html', context_dict, context)
 
@@ -84,7 +83,7 @@ def courses(request):
 
     return render_to_response('golf/courses.html', {'courses': course_list}, context)
 
-
+@login_required
 def rounds(request, week_num):
     context = RequestContext(request)
 
@@ -138,6 +137,14 @@ def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect('/golf/')
+
+@login_required
+def skins(request):
+    context = RequestContext(request)
+
+    weeks = Round.objects.values_list('week_num', flat=True).distinct().order_by('week_num')
+
+    return render_to_response('golf/skins.html', {'weeks': weeks}, context)
 
 @login_required
 def add_golfer(request):
