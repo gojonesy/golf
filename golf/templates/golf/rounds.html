@@ -3,22 +3,27 @@
 {% endblock %}
 {% block body_block %}
     <div class="hero-unit">
-        <h1>All Rounds</h1><br />
+        <h1>Rounds for Week {{ week }}</h1><br />
         <div class="container">
              <div class="span12">
                 {% if rounds %}
                      <table class="table table-striped table-bordered table-condensed">
-                        <th>#</th><th>Golfer</th><th>Week Num.</th><th>Date</th><th>Score</th>
+                        <th>#</th><th>Golfer</th><th>Week Num.</th><th>Hole 1</th>
+                        <th>Hole 2</th><th>Hole 3</th><th>Hole 4</th><th>Hole 5</th><th>Hole 6</th>
+                        <th>Hole 7</th><th>Hole 8</th><th>Hole 9</th><th>Score</th>
                     {% for r in rounds %}
                         <tr>
                             <td><a href="/golf/round/{{ r.id }}">View Round</a></td>
                             <td><a href="/golf/golfer/{{ r.golfer_id.id }}">{{ r.golfer_id }}</a></td>
-                            <td>{{ r.week_num }}</td><td>{{ r.date }}</td><td>{{ r.score }}</td>
+                            <td>{{ r.week_num }}</td><td>{{ r.adj_scores.0 }}</td><td>{{ r.adj_scores.1 }}</td>
+                            <td>{{ r.hole_3 }}</td><td>{{ r.hole_4 }}</td><td>{{ r.hole_5 }}</td><td>{{ r.hole_6 }}</td>
+                            <td>{{ r.hole_7 }}</td><td>{{ r.hole_8 }}</td><td>{{ r.hole_9 }}</td><td>{{ r.score }}</td>
                         </tr>
                     {% endfor %}
                      </table>
+
                 {% else %}
-                    <strong>There are no courses present</strong>
+                    <strong>There are no rounds present</strong>
                 {% endif %}
             </div>
             <!-- /span -->

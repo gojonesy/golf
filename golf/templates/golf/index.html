@@ -38,6 +38,17 @@
                 {% endif %}
             </div>
             </div>
+        <div id="selector">
+            <h3>View skins game results for week:</h3>
+        <select onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+            <option selected>Select...</option>
+            {% for w in weeks %}
+                <option value="rounds/{{ w }}">{{ w }}</option>
+            {% endfor %}
+        </select>
+
+        </div>
+
         <!-- /span -->
 
 {% endblock %}

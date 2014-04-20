@@ -17,10 +17,11 @@
                     <table class="table table-striped table-bordered table-condensed">
                         <tr>
                             <th>Avg. Score</th><th># of Rounds</th><th>Adj. Points</th><th>Handicap</th>
+                            <th>Adj. Stableford Points</th>
                         </tr>
                         <tr>
                             <td>{{ golfer.avg_score }}</td><td>{{ golfer.num_rds }}</td><td>{{ golfer.adj_points }}</td>
-                            <td>{{ golfer.handicap }}</td>
+                            <td>{{ golfer.handicap }}</td><td>{{ stable_points }}</td>
                         </tr>
                     </table>
                     <h3>Adjusted Hole Breakdown</h3>

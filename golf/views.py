@@ -21,6 +21,8 @@ def index(request):
     cur_year = datetime.now().year
 
     nums = []
+
+    weeks = Round.objects.values_list('week_num', flat=True).distinct()
     for i in range(1, 19):
         nums.append(i)
 
@@ -35,7 +37,7 @@ def index(request):
 
         table_dict[g.id] = {'points': points_list}
 
-    context_dict = {'golfers': golfer_list, 'nums': nums, 'table': table_dict}
+    context_dict = {'golfers': golfer_list, 'nums': nums, 'table': table_dict, 'weeks': weeks}
 
     return render_to_response('golf/index.html', context_dict, context)
 
@@ -46,14 +48,15 @@ def golfer(request, golfer_id):
     round_list = Round.objects.filter(golfer_id=golfer_id).order_by('date')
     try:
         golfer = Golfer.objects.get(pk=golfer_id)
-        total = golfer.total_points
         holes = hole_breakdown(golfer_id, cur_year)
         def_holes = holes[0]
         adj_holes = holes[1]
+        stable = stable_points(adj_holes)
+
     except Golfer.DoesNotExist:
         raise Http404
     return render_to_response('golf/golfer.html', {'golfer': golfer, 'def_holes': def_holes, 'adj_holes': adj_holes,
-                                                   'rounds': round_list}, context)
+                                                   'rounds': round_list, 'stable_points': stable}, context)
 
 
 def course(request, course_id):
@@ -82,12 +85,12 @@ def courses(request):
     return render_to_response('golf/courses.html', {'courses': course_list}, context)
 
 
-def rounds(request):
+def rounds(request, week_num):
     context = RequestContext(request)
 
-    round_list = Round.objects.all
+    round_list = Round.objects.filter(week_num=week_num, year=datetime.now().year)
 
-    return render_to_response('golf/rounds.html', {'rounds': round_list}, context)
+    return render_to_response('golf/rounds.html', {'rounds': round_list, 'week': week_num}, context)
 
 
 def about(request):
@@ -231,6 +234,19 @@ def hole_breakdown(g_id, year):
     hole_break = [par, bird, eagl, bogy, othr]
     adj_break = [a_par, a_bird, a_eagl, a_bogy, a_othr]
     return hole_break, adj_break
+
+
+def stable_points(holes):
+    s_par = holes[0] * 2
+    s_bir = holes[1] * 3
+    s_eag = holes[2] * 4
+    s_bog = holes[3]
+
+    total = s_par + s_bir + s_eag + s_bog
+    if not total:
+        total = 0.0
+
+    return total
 
 
 def par_check(hole, hole_par):

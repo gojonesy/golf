@@ -14,6 +14,16 @@ class Golfer(models.Model):
     handicap = models.IntegerField(default=0, null=True, blank=True)
     mod_date = models.DateField(auto_now=True)
 
+    def save(self):
+        cur_year = datetime.now().year
+
+        rounds = Round.objects.filter(golfer_id=self.id, year=cur_year).order_by('week_num')
+        if not rounds:
+            self.handicap = self.def_handicap
+
+        super(Golfer, self).save()
+
+
     @property
     def total_points(self):
         # Sum the points for a golfer for the current year
@@ -24,6 +34,7 @@ class Golfer(models.Model):
             total += r.points
 
         return total
+
 
     @property
     def name(self):
@@ -69,41 +80,6 @@ class Golfer(models.Model):
         else:
             return 0
 
-    #def save(self):
-        #if not self.handicap:
-            #self.handicap = self.def_handicap
-        # year = datetime.now().year
-        # scores = []
-        # rounds = Round.objects.filter(golfer_id=self.pk).order_by('week_num')
-        # # golfer = Golfer.objects.get(self)
-        # for r in rounds:
-        #     if r.date.year == year:
-        #         c = Course.objects.get(name=r.course_id)
-        #         # Year is the same. Get the correct number of rounds
-        #         calc = (r.score - c.rating)
-        #         scores.append(calc)
-        #
-        # scores.sort()
-        #
-        # temp_h = []
-        #
-        # if len(scores) % 2 == 0:
-        #     # Even number of rounds. Grab the lowest half
-        #     lowest = scores[:len(scores)/2]
-        # else:
-        #     # Odd number of rounds. Grab the lowest half, rounding up
-        #     lowest = scores[:len(scores)/2+1]
-        #
-        # for s in lowest:
-        #     flt_s = float(s) * .96
-        #
-        #     temp_h.append(int(round(flt_s)))
-        # if not temp_h:
-        #     self.handicap = self.def_handicap
-        # else:
-        #     self.handicap = sum(temp_h) / len(temp_h)
-
-        #super(Golfer, self).save()
 
     def __unicode__(self):
         return self.name
