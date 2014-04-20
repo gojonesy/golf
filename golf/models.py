@@ -175,13 +175,13 @@ class Round(models.Model):
         if not lowest:
             golfer.def_handicap = self.cur_handicap
         else:
-            print "Current Golfer Handicap: ", golfer.handicap
+            # print "Current Golfer Handicap: ", golfer.handicap
             diffs = sum(lowest) * .96
-            print "Diffs: ", diffs
+            # print "Diffs: ", diffs
             golfer.handicap = round(diffs / float(len(lowest)))
-            print golfer.handicap
+            # print golfer.handicap
             golfer.save()
-            print "New Golfer Handicap: ", golfer.handicap
+            # print "New Golfer Handicap: ", golfer.handicap
         # self.cur_handicap = sum(temp_h) / len(temp_h)
 
         super(Round, self).save()

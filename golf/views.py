@@ -22,7 +22,7 @@ def index(request):
 
     nums = []
 
-    weeks = Round.objects.values_list('week_num', flat=True).distinct()
+    weeks = Round.objects.values_list('week_num', flat=True).distinct().order_by('week_num')
     for i in range(1, 19):
         nums.append(i)
 
