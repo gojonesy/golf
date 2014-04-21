@@ -23,10 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="46" selection-start="668" selection-end="668" vertical-scroll-proportion="0.23606557" vertical-offset="54" max-vertical-offset="5166">
+            <state line="14" column="46" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="5166">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/golf/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="49" selection-start="913" selection-end="913" vertical-scroll-proportion="0.54895663" vertical-offset="0" max-vertical-offset="1278">
               <folding />
             </state>
           </provider>
@@ -52,7 +61,6 @@
         <option value="$PROJECT_DIR$/golf/templates/golf/course.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/courses.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/round.html" />
-        <option value="$PROJECT_DIR$/golf/forms.py" />
         <option value="$PROJECT_DIR$/golf/unused_functions.txt" />
         <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/test_data.py" />
@@ -67,6 +75,7 @@
         <option value="$PROJECT_DIR$/golf/urls.py" />
         <option value="$PROJECT_DIR$/golf/templates/golf/rules.html" />
         <option value="$PROJECT_DIR$/golf/models.py" />
+        <option value="$PROJECT_DIR$/golf/forms.py" />
       </list>
     </option>
   </component>
@@ -526,11 +535,6 @@
         <state line="15" column="86" selection-start="620" selection-end="620" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="990" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/golf/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="70" selection-start="250" selection-end="250" vertical-scroll-proportion="0.097508125" vertical-offset="0" max-vertical-offset="1260" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="41" selection-start="1662" selection-end="1671" vertical-scroll-proportion="0.27901787" vertical-offset="434" max-vertical-offset="1494" />
@@ -598,7 +602,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="46" selection-start="668" selection-end="668" vertical-scroll-proportion="0.23606557" vertical-offset="54" max-vertical-offset="5166">
+        <state line="14" column="46" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="5166">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="49" selection-start="913" selection-end="913" vertical-scroll-proportion="0.54895663" vertical-offset="0" max-vertical-offset="1278">
           <folding />
         </state>
       </provider>

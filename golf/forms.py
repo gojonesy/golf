@@ -10,6 +10,7 @@ class GolferForm(forms.ModelForm):
     phone_alt = forms.CharField(max_length=12, help_text="Alternate Phone", required=False)
     def_handicap = forms.IntegerField(help_text="Starting Handicap.")
     handicap = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    skins = forms.BooleanField(help_text="Skins Game?")
 
     class Meta:
         model = Golfer
