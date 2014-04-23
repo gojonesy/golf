@@ -16,8 +16,8 @@
                             <td><a href="/golf/round/{{ r.id }}">View Round</a></td>
                             <td><a href="/golf/golfer/{{ r.golfer_id.id }}">{{ r.golfer_id }}</a></td>
                             <td>{{ r.week_num }}</td><td>{{ r.adj_scores.0 }}</td><td>{{ r.adj_scores.1 }}</td>
-                            <td>{{ r.hole_3 }}</td><td>{{ r.hole_4 }}</td><td>{{ r.hole_5 }}</td><td>{{ r.hole_6 }}</td>
-                            <td>{{ r.hole_7 }}</td><td>{{ r.hole_8 }}</td><td>{{ r.hole_9 }}</td><td>{{ r.score }}</td>
+                            <td>{{ r.adj_scores.2 }}</td><td>{{ r.adj_scores.3 }}</td><td>{{ r.adj_scores.4 }}</td><td>{{ r.adj_scores.5 }}</td>
+                            <td>{{ r.adj_scores.6 }}</td><td>{{ r.adj_scores.7 }}</td><td>{{ r.adj_scores.8 }}</td><td>{{ r.mod_score }}</td>
                         </tr>
                     {% endfor %}
                      </table>
