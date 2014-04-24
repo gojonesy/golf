@@ -87,7 +87,9 @@ def courses(request):
 def rounds(request, week_num):
     context = RequestContext(request)
 
-    round_list = Round.objects.filter(week_num=week_num, year=datetime.now().year)
+    golfer_list = Golfer.objects.filter(skins=True)
+
+    round_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True)
 
     return render_to_response('golf/rounds.html', {'rounds': round_list, 'week': week_num}, context)
 
