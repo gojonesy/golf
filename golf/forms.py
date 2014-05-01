@@ -64,5 +64,5 @@ class RoundForm(forms.ModelForm):
 
     class Meta:
         model = Round
-        
+
 

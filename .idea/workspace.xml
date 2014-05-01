@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="forms.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="8" selection-start="3277" selection-end="3277" vertical-scroll-proportion="0.81609195" vertical-offset="549" max-vertical-offset="1332">
+            <state line="66" column="0" selection-start="3269" selection-end="3269" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
               <folding>
                 <element signature="e#27#54#0" expanded="true" />
               </folding>
@@ -34,10 +34,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_round.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="add_course.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_course.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="66" selection-start="3658" selection-end="3658" vertical-scroll-proportion="-25.333334" vertical-offset="324" max-vertical-offset="1386">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_round.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="53" selection-start="654" selection-end="654" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1530">
+            <state line="48" column="71" selection-start="2308" selection-end="2308" vertical-scroll-proportion="0.42857143" vertical-offset="540" max-vertical-offset="1530">
               <folding />
             </state>
           </provider>
@@ -63,7 +72,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/golf_league/urls.py" />
-        <option value="$PROJECT_DIR$/golf/templates/golf/add_course.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/add_golfer.html" />
         <option value="$PROJECT_DIR$/golf/templates/golf/about.html" />
         <option value="$PROJECT_DIR$/golf/admin.py" />
@@ -85,9 +93,10 @@
         <option value="$PROJECT_DIR$/golf/views.py" />
         <option value="$PROJECT_DIR$/golf/widgets.py" />
         <option value="$PROJECT_DIR$/golf/templates/golf/base.html" />
-        <option value="$PROJECT_DIR$/golf/templates/golf/add_round.html" />
         <option value="$PROJECT_DIR$/golf_league/settings.py" />
         <option value="$PROJECT_DIR$/golf/forms.py" />
+        <option value="$PROJECT_DIR$/golf/templates/golf/add_course.html" />
+        <option value="$PROJECT_DIR$/golf/templates/golf/add_round.html" />
       </list>
     </option>
   </component>
@@ -523,11 +532,6 @@
         <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="162" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_course.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="41" selection-start="208" selection-end="225" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="1386" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_golfer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="102" selection-start="1648" selection-end="1648" vertical-scroll-proportion="-23.333334" vertical-offset="0" max-vertical-offset="900" />
@@ -640,13 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="53" selection-start="654" selection-end="654" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1530">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/golf_league/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="153" column="17" selection-start="5450" selection-end="5450" vertical-scroll-proportion="0.74712646" vertical-offset="2169" max-vertical-offset="3456">
@@ -656,10 +653,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/golf/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="8" selection-start="3277" selection-end="3277" vertical-scroll-proportion="0.81609195" vertical-offset="549" max-vertical-offset="1332">
+        <state line="66" column="0" selection-start="3269" selection-end="3269" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
           <folding>
             <element signature="e#27#54#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_course.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="66" selection-start="3658" selection-end="3658" vertical-scroll-proportion="-25.333334" vertical-offset="324" max-vertical-offset="1386">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/golf/templates/golf/add_round.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="71" selection-start="2308" selection-end="2308" vertical-scroll-proportion="0.42857143" vertical-offset="540" max-vertical-offset="1530">
+          <folding />
         </state>
       </provider>
     </entry>
