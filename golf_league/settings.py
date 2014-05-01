@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'golf',
     'south',
     'widget_tweaks',
+    'floppyforms'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
