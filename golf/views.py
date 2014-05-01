@@ -87,11 +87,56 @@ def courses(request):
 def rounds(request, week_num):
     context = RequestContext(request)
 
-    golfer_list = Golfer.objects.filter(skins=True)
+    # golfer_list = Golfer.objects.filter(skins=True)
 
     round_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True)
+    # hole_1, hole_2, hole_3, hole_4, hole_5, hole_6, hole_7, hole_8, hole_9 = [], [], [], [], [], [], [], [], []
+    winners = ["", "", "", "", "", "", "", "", ""]
+    holes = [[], [], [], [], [], [], [], [], []]
 
-    return render_to_response('golf/rounds.html', {'rounds': round_list, 'week': week_num}, context)
+    for s in round_list:
+         holes[0].append(s.adj_scores[0])
+         holes[1].append(s.adj_scores[1])
+         holes[2].append(s.adj_scores[2])
+         holes[3].append(s.adj_scores[3])
+         holes[4].append(s.adj_scores[4])
+         holes[5].append(s.adj_scores[5])
+         holes[6].append(s.adj_scores[6])
+         holes[7].append(s.adj_scores[7])
+         holes[8].append(s.adj_scores[8])
+
+    #print holes[0]
+    #print holes[5].count(min(holes[5]))
+    for i in range(len(holes)):
+        if holes[i].count(min(holes[i])) == 1:
+            winners[i] = (min(holes[i]))
+
+    #
+    # for h in range(len(winners)):
+    #     if hole_1.count(min(hole_1)) == 1:
+    #         winners[0] = (min(hole_1))
+    #     elif hole_2.count(min(hole_2)) == 1:
+    #         winners[1] = (min(hole_2))
+    #     elif hole_3.count(min(hole_3)) == 1:
+    #         winners[2] = (min(hole_3))
+    #     elif hole_4.count(min(hole_4)) == 1:
+    #         winners[3] = (min(hole_4))
+    #     elif hole_5.count(min(hole_5)) == 1:
+    #         winners[4] = (min(hole_5))
+    #     elif hole_6.count(min(hole_6)) == 1:
+    #         winners[5] = (min(hole_6))
+    #     elif hole_7.count(min(hole_7)) == 1:
+    #         winners[6] = (min(hole_7))
+    #     elif hole_8.count(min(hole_8)) == 1:
+    #         winners[7] = (min(hole_8))
+    #     elif hole_9.count(min(hole_9)) == 1:
+    #         winners[8] = (min(hole_9))
+    #
+    # print hole_9.count(min(hole_9))
+    # print min(hole_9)
+    print winners
+
+    return render_to_response('golf/rounds.html', {'rounds': round_list, 'week': week_num, 'winners': winners}, context)
 
 
 def about(request):
@@ -150,7 +195,8 @@ def skins(request):
     context = RequestContext(request)
 
     weeks = Round.objects.values_list('week_num', flat=True).distinct().order_by('week_num')
-
+    for w in weeks:
+        print w
     return render_to_response('golf/skins.html', {'weeks': weeks}, context)
 
 @login_required
