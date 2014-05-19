@@ -95,21 +95,21 @@ def rounds(request, week_num):
     holes = [[], [], [], [], [], [], [], [], []]
 
     for s in round_list:
-         holes[0].append(s.adj_scores[0])
-         holes[1].append(s.adj_scores[1])
-         holes[2].append(s.adj_scores[2])
-         holes[3].append(s.adj_scores[3])
-         holes[4].append(s.adj_scores[4])
-         holes[5].append(s.adj_scores[5])
-         holes[6].append(s.adj_scores[6])
-         holes[7].append(s.adj_scores[7])
-         holes[8].append(s.adj_scores[8])
+        holes[0].append(s.adj_scores[0])
+        holes[1].append(s.adj_scores[1])
+        holes[2].append(s.adj_scores[2])
+        holes[3].append(s.adj_scores[3])
+        holes[4].append(s.adj_scores[4])
+        holes[5].append(s.adj_scores[5])
+        holes[6].append(s.adj_scores[6])
+        holes[7].append(s.adj_scores[7])
+        holes[8].append(s.adj_scores[8])
 
-    #print holes[0]
-    #print holes[5].count(min(holes[5]))
-    for i in range(len(holes)):
+    for i, j in enumerate(range(len(holes))):
         if holes[i].count(min(holes[i])) == 1:
             winners[i] = (min(holes[i]))
+            print j
+
 
     #
     # for h in range(len(winners)):
@@ -134,7 +134,7 @@ def rounds(request, week_num):
     #
     # print hole_9.count(min(hole_9))
     # print min(hole_9)
-    print winners
+    #print winners
 
     return render_to_response('golf/rounds.html', {'rounds': round_list, 'week': week_num, 'winners': winners}, context)
 

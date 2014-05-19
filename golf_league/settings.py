@@ -4,7 +4,8 @@ import os
 SETTINGS_DIR = os.path.dirname(__file__)
 #PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 #PROJECT_PATH = os.path.abspath(PROJECT_PATH)
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+#PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+PROJECT_PATH = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 LOGIN_URL = '/golf/login/'
@@ -135,6 +136,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     TEMPLATE_PATH,
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
 )
 
 INSTALLED_APPS = (

@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+<a href="/golf/">Return to the Golf League Site</a>Hello!
+<h1 id="site-name">{% trans 'Django Golf League administration' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
