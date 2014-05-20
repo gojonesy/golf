@@ -44,12 +44,27 @@ class CourseForm(forms.ModelForm):
         model = Course
 
 
+class DatePicker(forms.DateInput):
+    template_name = 'datepicker.html'
+
+    class Media:
+        js = (
+            'js/jquery.min.js',
+            'js/jquery-ui.min.js',
+        )
+        css = {
+            'all': (
+                'css/jquery-ui.css',
+            )
+        }
+
+
 class RoundForm(forms.ModelForm):
     golfer_id = forms.ModelChoiceField(queryset=Golfer.objects.all().order_by('last_name'),
                                        empty_label="(Select a golfer...)", help_text="Golfer")
     course_id = forms.ModelChoiceField(queryset=Course.objects.all().order_by('name'), help_text="Course",
                                        empty_label="(Select a course...)")
-    date = forms.DateField(help_text="Date")
+    date = forms.DateField(help_text="Date", widget=DatePicker)
     year = forms.IntegerField(widget=forms.HiddenInput(), initial=2014)
     week_num = forms.ChoiceField(widget=forms.Select, choices=((str(x), x) for x in range(1, 19)), help_text="Week No.")
     hole_1 = forms.IntegerField(help_text="Hole 1")
