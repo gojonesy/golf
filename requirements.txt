@@ -10,4 +10,5 @@ psycopg2==2.5.2
 pystache==0.5.3
 pytz==2014.2
 static==1.0.2
+waitress==0.8.9
 wsgiref==0.1.2

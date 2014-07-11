@@ -1,1 +1,1 @@
-web: gunicorn golf_league.wsgi
+web: waitress-serve --port=$PORT golf_league.wsgi:application
