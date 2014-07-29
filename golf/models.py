@@ -197,48 +197,48 @@ class Round(models.Model):
 
         self.points = points
         self.mod_points = mod_points
-        #self.cur_handicap = golfer.handicap
+        self.cur_handicap = golfer.handicap
 
         super(Round, self).save()
 
-        # for r in rounds:
-        #     if r.date.year == year:
-        #         c = Course.objects.get(name=r.course_id)
-        #         # Year is the same. Get the correct number of rounds
-        #         calc = float(r.score - c.rating)
-        #         scores.append(calc)
-        #
-        # scores.sort()
-        # #print scores
-        # temp_h = []
-        #
-        # if len(scores) % 2 == 0:
-        #     # Even number of rounds. Grab the lowest half
-        #     lowest = scores[:len(scores)/2]
-        # else:
-        #     # Odd number of rounds. Grab the lowest half, rounding up
-        #     lowest = scores[:len(scores)/2+1]
-        #
-        # print lowest
-        # # for s in lowest:
-        # #     print s
-        # #     diff = round(s) * .96
-        # #     print "Pre convert: ", diff
-        # #     print "Post convert: ", int(round(diff))
-        # #     temp_h.append(int(round(diff)))
-        #
-        # if not lowest:
-        #     golfer.def_handicap = self.cur_handicap
-        # else:
-        #     #print "Current Golfer Handicap: ", golfer.handicap
-        #     #print lowest
-        #     diffs = float(sum(lowest)) * .96
-        #     golfer.handicap = round(diffs / float(len(lowest)))
-        #     golfer.save()
-        #     # print "New Golfer Handicap: ", golfer.handicap
-        # # self.cur_handicap = sum(temp_h) / len(temp_h)
-        #
-        # super(Round, self).save()
+        for r in rounds:
+            if r.date.year == year:
+                c = Course.objects.get(name=r.course_id)
+                # Year is the same. Get the correct number of rounds
+                calc = float(r.score - c.rating)
+                scores.append(calc)
+
+        scores.sort()
+        #print scores
+        temp_h = []
+
+        if len(scores) % 2 == 0:
+            # Even number of rounds. Grab the lowest half
+            lowest = scores[:len(scores)/2]
+        else:
+            # Odd number of rounds. Grab the lowest half, rounding up
+            lowest = scores[:len(scores)/2+1]
+
+        #print lowest
+        # for s in lowest:
+        #     print s
+        #     diff = round(s) * .96
+        #     print "Pre convert: ", diff
+        #     print "Post convert: ", int(round(diff))
+        #     temp_h.append(int(round(diff)))
+
+        if not lowest:
+            golfer.def_handicap = self.cur_handicap
+        else:
+            #print "Current Golfer Handicap: ", golfer.handicap
+            #print lowest
+            diffs = float(sum(lowest)) * .96
+            golfer.handicap = round(diffs / float(len(lowest)))
+            golfer.save()
+            # print "New Golfer Handicap: ", golfer.handicap
+        # self.cur_handicap = sum(temp_h) / len(temp_h)
+
+        super(Round, self).save()
 
     @property
     def adj_scores(self):

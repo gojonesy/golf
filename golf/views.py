@@ -31,7 +31,7 @@ def index(request):
         rounds = Round.objects.all().filter(date__year=cur_year, golfer_id=g.id).order_by('-week_num')
         # temp_list.append(g.id)
         for r in rounds:
-            print r.mod_points
+            #print r.mod_points
             points_list[r.week_num - 1] = r.mod_points
             #((r.week_num - 1), r.points)
 

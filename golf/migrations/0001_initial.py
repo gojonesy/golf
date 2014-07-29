@@ -68,6 +68,8 @@ class Migration(SchemaMigration):
             ('hole_7', self.gf('django.db.models.fields.IntegerField')(default=0)),
             ('hole_8', self.gf('django.db.models.fields.IntegerField')(default=0)),
             ('hole_9', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('points', self.gf('django.db.models.fields.FloatField')(default=0.0)),
+            ('mod_points', self.gf('django.db.models.fields.FloatField')(default=0.0)),
             ('cur_handicap', self.gf('django.db.models.fields.IntegerField')(default=0, null=True, blank=True)),
             ('mod_date', self.gf('django.db.models.fields.DateField')(auto_now=True, blank=True)),
         ))
@@ -148,6 +150,8 @@ class Migration(SchemaMigration):
             'hole_9': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'mod_date': ('django.db.models.fields.DateField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'mod_points': ('django.db.models.fields.FloatField', [], {'default': '0.0'}),
+            'points': ('django.db.models.fields.FloatField', [], {'default': '0.0'}),
             'week_num': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'year': ('django.db.models.fields.IntegerField', [], {'default': '0', 'blank': 'True'})
         }
