@@ -46,4 +46,8 @@ if __name__ == '__main__':
     print "Starting Golf League Test data population script..."
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'golf_league.settings')
     from golf.models import Golfer, Course, Round
-    populate()
+    #populate()
+    rounds = Round.objects.all()
+
+    for r in rounds:
+        r.save()

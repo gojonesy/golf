@@ -134,6 +134,8 @@ class Round(models.Model):
     hole_7 = models.IntegerField(default=0)
     hole_8 = models.IntegerField(default=0)
     hole_9 = models.IntegerField(default=0)
+    #points = models.FloatField(default=0.0)
+    #mod_points = models.FloatField(default=0.0)
     cur_handicap = models.IntegerField(default=0, null=True, blank=True)
     mod_date = models.DateField(auto_now=True)
 
@@ -145,47 +147,98 @@ class Round(models.Model):
         scores = []
         rounds = Round.objects.filter(golfer_id=self.golfer_id).order_by('week_num')
         golfer = Golfer.objects.get(pk=self.golfer_id.id)
-        self.cur_handicap = golfer.handicap
+        course = Course.objects.get(name=self.course_id)
+                # process points, modified points here
+        scores = [[self.hole_1, course.hole1par], [self.hole_2, course.hole2par], [self.hole_3, course.hole3par],
+                  [self.hole_4, course.hole4par], [self.hole_5, course.hole5par], [self.hole_6, course.hole6par],
+                  [self.hole_7, course.hole7par], [self.hole_8, course.hole8par], [self.hole_9, course.hole9par]]
+        points = 0.0
+
+        p_hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
+        for s in scores:
+            if s[0] - s[1] == 0:
+                p_hole_break['Par'] += 1
+            elif s[0] - s[1] == -1:
+                p_hole_break['Birdie'] += 1
+            elif s[0] - s[1] == -2:
+                p_hole_break['Eagle'] += 1
+            elif s[0] - s[1] == 1:
+                p_hole_break['Bogey'] += 1
+            else:
+                p_hole_break['Other'] += 1
+
+        points += p_hole_break['Par'] * .5
+        points += p_hole_break['Birdie'] * 1
+        points += p_hole_break['Eagle'] * 1
+
+        m_scores = [[self.adj_scores[0], course.hole1par], [self.adj_scores[1], course.hole2par],
+                    [self.adj_scores[2], course.hole3par], [self.adj_scores[3], course.hole4par],
+                    [self.adj_scores[4], course.hole5par], [self.adj_scores[5], course.hole6par],
+                    [self.adj_scores[6], course.hole7par], [self.adj_scores[7], course.hole8par],
+                    [self.adj_scores[8], course.hole9par]]
+        mod_points = 0.0
+
+        hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
+        for s in m_scores:
+            if s[0] - s[1] == 0:
+                hole_break['Par'] += 1
+            elif s[0] - s[1] == -1:
+                hole_break['Birdie'] += 1
+            elif s[0] - s[1] <= -2:
+                hole_break['Eagle'] += 1
+            elif s[0] - s[1] == 1:
+                hole_break['Bogey'] += 1
+            else:
+                hole_break['Other'] += 1
+
+        mod_points += hole_break['Par'] * .5
+        mod_points += hole_break['Birdie'] * 1
+        mod_points += hole_break['Eagle'] * 1
+
+        #self.points = points
+        #self.mod_points = mod_points
+        #self.cur_handicap = golfer.handicap
 
         super(Round, self).save()
-        for r in rounds:
-            if r.date.year == year:
-                c = Course.objects.get(name=r.course_id)
-                # Year is the same. Get the correct number of rounds
-                calc = float(r.score - c.rating)
-                scores.append(calc)
 
-        scores.sort()
-
-        temp_h = []
-
-        if len(scores) % 2 == 0:
-            # Even number of rounds. Grab the lowest half
-            lowest = scores[:len(scores)/2]
-        else:
-            # Odd number of rounds. Grab the lowest half, rounding up
-            lowest = scores[:len(scores)/2+1]
-
-        # for s in lowest:
-        #     print s
-        #     diff = round(s) * .96
-        #     print "Pre convert: ", diff
-        #     print "Post convert: ", int(round(diff))
-        #     temp_h.append(int(round(diff)))
-
-        if not lowest:
-            golfer.def_handicap = self.cur_handicap
-        else:
-            # print "Current Golfer Handicap: ", golfer.handicap
-            diffs = sum(lowest) * .96
-            # print "Diffs: ", diffs
-            golfer.handicap = round(diffs / float(len(lowest)))
-            # print golfer.handicap
-            golfer.save()
-            # print "New Golfer Handicap: ", golfer.handicap
-        # self.cur_handicap = sum(temp_h) / len(temp_h)
-
-        super(Round, self).save()
+        # for r in rounds:
+        #     if r.date.year == year:
+        #         c = Course.objects.get(name=r.course_id)
+        #         # Year is the same. Get the correct number of rounds
+        #         calc = float(r.score - c.rating)
+        #         scores.append(calc)
+        #
+        # scores.sort()
+        # #print scores
+        # temp_h = []
+        #
+        # if len(scores) % 2 == 0:
+        #     # Even number of rounds. Grab the lowest half
+        #     lowest = scores[:len(scores)/2]
+        # else:
+        #     # Odd number of rounds. Grab the lowest half, rounding up
+        #     lowest = scores[:len(scores)/2+1]
+        #
+        # print lowest
+        # # for s in lowest:
+        # #     print s
+        # #     diff = round(s) * .96
+        # #     print "Pre convert: ", diff
+        # #     print "Post convert: ", int(round(diff))
+        # #     temp_h.append(int(round(diff)))
+        #
+        # if not lowest:
+        #     golfer.def_handicap = self.cur_handicap
+        # else:
+        #     #print "Current Golfer Handicap: ", golfer.handicap
+        #     #print lowest
+        #     diffs = float(sum(lowest)) * .96
+        #     golfer.handicap = round(diffs / float(len(lowest)))
+        #     golfer.save()
+        #     # print "New Golfer Handicap: ", golfer.handicap
+        # # self.cur_handicap = sum(temp_h) / len(temp_h)
+        #
+        # super(Round, self).save()
 
     @property
     def adj_scores(self):
@@ -226,59 +279,59 @@ class Round(models.Model):
         final = self.adj_scores
         return sum(final)
 
-    @property
-    def points(self):
-        c = Course.objects.get(name=self.course_id)
-        scores = [[self.hole_1, c.hole1par], [self.hole_2, c.hole2par], [self.hole_3, c.hole3par], [self.hole_4, c.hole4par],
-                          [self.hole_5, c.hole5par], [self.hole_6, c.hole6par], [self.hole_7, c.hole7par], [self.hole_8, c.hole8par],
-                          [self.hole_9, c.hole9par]]
-        points = 0.0
+    # @property
+    # def points(self):
+    #     c = Course.objects.get(name=self.course_id)
+    #     scores = [[self.hole_1, c.hole1par], [self.hole_2, c.hole2par], [self.hole_3, c.hole3par], [self.hole_4, c.hole4par],
+    #                       [self.hole_5, c.hole5par], [self.hole_6, c.hole6par], [self.hole_7, c.hole7par], [self.hole_8, c.hole8par],
+    #                       [self.hole_9, c.hole9par]]
+    #     points = 0.0
+    #
+    #     hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
+    #     for s in scores:
+    #         if s[0] - s[1] == 0:
+    #             hole_break['Par'] += 1
+    #         elif s[0] - s[1] == -1:
+    #             hole_break['Birdie'] += 1
+    #         elif s[0] - s[1] == -2:
+    #             hole_break['Eagle'] += 1
+    #         elif s[0] - s[1] == 1:
+    #             hole_break['Bogey'] += 1
+    #         else:
+    #             hole_break['Other'] += 1
+    #
+    #     points += hole_break['Par'] * .5
+    #     points += hole_break['Birdie'] * 1
+    #     points += hole_break['Eagle'] * 1
+    #
+    #     return points
 
-        hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
-        for s in scores:
-            if s[0] - s[1] == 0:
-                hole_break['Par'] += 1
-            elif s[0] - s[1] == -1:
-                hole_break['Birdie'] += 1
-            elif s[0] - s[1] == -2:
-                hole_break['Eagle'] += 1
-            elif s[0] - s[1] == 1:
-                hole_break['Bogey'] += 1
-            else:
-                hole_break['Other'] += 1
-
-        points += hole_break['Par'] * .5
-        points += hole_break['Birdie'] * 1
-        points += hole_break['Eagle'] * 1
-
-        return points
-
-    @property
-    def mod_points(self):
-        c = Course.objects.get(name=self.course_id)
-        scores = [[self.adj_scores[0], c.hole1par], [self.adj_scores[1], c.hole2par], [self.adj_scores[2], c.hole3par],
-                  [self.adj_scores[3], c.hole4par], [self.adj_scores[4], c.hole5par], [self.adj_scores[5], c.hole6par],
-                  [self.adj_scores[6], c.hole7par], [self.adj_scores[7], c.hole8par], [self.adj_scores[8], c.hole9par]]
-        mod_points = 0.0
-
-        hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
-        for s in scores:
-            if s[0] - s[1] == 0:
-                hole_break['Par'] += 1
-            elif s[0] - s[1] == -1:
-                hole_break['Birdie'] += 1
-            elif s[0] - s[1] <= -2:
-                hole_break['Eagle'] += 1
-            elif s[0] - s[1] == 1:
-                hole_break['Bogey'] += 1
-            else:
-                hole_break['Other'] += 1
-
-        mod_points += hole_break['Par'] * .5
-        mod_points += hole_break['Birdie'] * 1
-        mod_points += hole_break['Eagle'] * 1
-
-        return mod_points
+    # @property
+    # def mod_points(self):
+    #     c = Course.objects.get(name=self.course_id)
+    #     scores = [[self.adj_scores[0], c.hole1par], [self.adj_scores[1], c.hole2par], [self.adj_scores[2], c.hole3par],
+    #               [self.adj_scores[3], c.hole4par], [self.adj_scores[4], c.hole5par], [self.adj_scores[5], c.hole6par],
+    #               [self.adj_scores[6], c.hole7par], [self.adj_scores[7], c.hole8par], [self.adj_scores[8], c.hole9par]]
+    #     mod_points = 0.0
+    #
+    #     hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
+    #     for s in scores:
+    #         if s[0] - s[1] == 0:
+    #             hole_break['Par'] += 1
+    #         elif s[0] - s[1] == -1:
+    #             hole_break['Birdie'] += 1
+    #         elif s[0] - s[1] <= -2:
+    #             hole_break['Eagle'] += 1
+    #         elif s[0] - s[1] == 1:
+    #             hole_break['Bogey'] += 1
+    #         else:
+    #             hole_break['Other'] += 1
+    #
+    #     mod_points += hole_break['Par'] * .5
+    #     mod_points += hole_break['Birdie'] * 1
+    #     mod_points += hole_break['Eagle'] * 1
+    #
+    #     return mod_points
 
     def __unicode__(self):
         return str(self.week_num)
