@@ -134,8 +134,8 @@ class Round(models.Model):
     hole_7 = models.IntegerField(default=0)
     hole_8 = models.IntegerField(default=0)
     hole_9 = models.IntegerField(default=0)
-    #points = models.FloatField(default=0.0)
-    #mod_points = models.FloatField(default=0.0)
+    points = models.FloatField(default=0.0)
+    mod_points = models.FloatField(default=0.0)
     cur_handicap = models.IntegerField(default=0, null=True, blank=True)
     mod_date = models.DateField(auto_now=True)
 
@@ -195,8 +195,8 @@ class Round(models.Model):
         mod_points += hole_break['Birdie'] * 1
         mod_points += hole_break['Eagle'] * 1
 
-        #self.points = points
-        #self.mod_points = mod_points
+        self.points = points
+        self.mod_points = mod_points
         #self.cur_handicap = golfer.handicap
 
         super(Round, self).save()
