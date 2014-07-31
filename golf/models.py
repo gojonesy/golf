@@ -134,8 +134,8 @@ class Round(models.Model):
     hole_7 = models.IntegerField(default=0)
     hole_8 = models.IntegerField(default=0)
     hole_9 = models.IntegerField(default=0)
-    points = models.FloatField(default=0.0)
-    mod_points = models.FloatField(default=0.0)
+    points = models.FloatField(default=0.0, blank=True, null=True)
+    mod_points = models.FloatField(default=0.0, blank=True, null=True)
     cur_handicap = models.IntegerField(default=0, null=True, blank=True)
     mod_date = models.DateField(auto_now=True)
 
@@ -148,6 +148,10 @@ class Round(models.Model):
         rounds = Round.objects.filter(golfer_id=self.golfer_id).order_by('week_num')
         golfer = Golfer.objects.get(pk=self.golfer_id.id)
         course = Course.objects.get(name=self.course_id)
+        self.cur_handicap = golfer.handicap
+        self.points = 0.0
+        self.mod_points = 0.0
+        super(Round, self).save()
                 # process points, modified points here
         scores = [[self.hole_1, course.hole1par], [self.hole_2, course.hole2par], [self.hole_3, course.hole3par],
                   [self.hole_4, course.hole4par], [self.hole_5, course.hole5par], [self.hole_6, course.hole6par],
@@ -197,10 +201,9 @@ class Round(models.Model):
 
         self.points = points
         self.mod_points = mod_points
-        self.cur_handicap = golfer.handicap
 
         super(Round, self).save()
-
+        scores = []
         for r in rounds:
             if r.date.year == year:
                 c = Course.objects.get(name=r.course_id)
@@ -209,15 +212,20 @@ class Round(models.Model):
                 scores.append(calc)
 
         scores.sort()
-        #print scores
-        temp_h = []
+        #print "Scores: ", scores
+        #temp_h = []
 
         if len(scores) % 2 == 0:
             # Even number of rounds. Grab the lowest half
+            #print "even"
             lowest = scores[:len(scores)/2]
+            #print "Even Lowest: ", lowest
         else:
             # Odd number of rounds. Grab the lowest half, rounding up
+            #print "odd"
             lowest = scores[:len(scores)/2+1]
+            #print "Odd Lowest: ", lowest
+
 
         #print lowest
         # for s in lowest:
@@ -231,11 +239,11 @@ class Round(models.Model):
             golfer.def_handicap = self.cur_handicap
         else:
             #print "Current Golfer Handicap: ", golfer.handicap
-            #print lowest
+            #print "Lowest: ", lowest
             diffs = float(sum(lowest)) * .96
             golfer.handicap = round(diffs / float(len(lowest)))
             golfer.save()
-            # print "New Golfer Handicap: ", golfer.handicap
+            #print "New Golfer Handicap: ", golfer.handicap
         # self.cur_handicap = sum(temp_h) / len(temp_h)
 
         super(Round, self).save()

@@ -41,6 +41,7 @@ def index(request):
 
     return render_to_response('golf/index.html', context_dict, context)
 
+
 def golfer(request, golfer_id):
     context = RequestContext(request)
     # Get the current year and pass it to the avg_score function
