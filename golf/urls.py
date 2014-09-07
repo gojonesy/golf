@@ -17,4 +17,5 @@ urlpatterns = patterns('',
                        url(r'^about/$', views.about, name='about'),
                        url(r'^skins/$', views.skins, name='skins'),
                        url(r'^rules/$', views.rules, name='rules'),
+                       url(r'^standings/$', views.standings, name='standings'),
                        )

@@ -14,6 +14,7 @@ import math
 def custom_404(request):
     return render_to_response('404.html')
 
+
 def index(request):
     context = RequestContext(request)
     table_dict = {}
@@ -85,6 +86,14 @@ def courses(request):
 
     return render_to_response('golf/courses.html', {'courses': course_list}, context)
 
+
+def standings(request):
+    context = RequestContext(request)
+
+    return render_to_response('golf/standings.html', context)
+
+
+
 @login_required
 def rounds(request, week_num):
     context = RequestContext(request)
@@ -111,32 +120,6 @@ def rounds(request, week_num):
         if holes[i].count(min(holes[i])) == 1:
             winners[i] = (min(holes[i]))
             print j
-
-
-    #
-    # for h in range(len(winners)):
-    #     if hole_1.count(min(hole_1)) == 1:
-    #         winners[0] = (min(hole_1))
-    #     elif hole_2.count(min(hole_2)) == 1:
-    #         winners[1] = (min(hole_2))
-    #     elif hole_3.count(min(hole_3)) == 1:
-    #         winners[2] = (min(hole_3))
-    #     elif hole_4.count(min(hole_4)) == 1:
-    #         winners[3] = (min(hole_4))
-    #     elif hole_5.count(min(hole_5)) == 1:
-    #         winners[4] = (min(hole_5))
-    #     elif hole_6.count(min(hole_6)) == 1:
-    #         winners[5] = (min(hole_6))
-    #     elif hole_7.count(min(hole_7)) == 1:
-    #         winners[6] = (min(hole_7))
-    #     elif hole_8.count(min(hole_8)) == 1:
-    #         winners[7] = (min(hole_8))
-    #     elif hole_9.count(min(hole_9)) == 1:
-    #         winners[8] = (min(hole_9))
-    #
-    # print hole_9.count(min(hole_9))
-    # print min(hole_9)
-    #print winners
 
     return render_to_response('golf/rounds.html', {'rounds': round_list, 'week': week_num, 'winners': winners}, context)
 

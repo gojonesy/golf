@@ -226,15 +226,6 @@ class Round(models.Model):
             lowest = scores[:len(scores)/2+1]
             #print "Odd Lowest: ", lowest
 
-
-        #print lowest
-        # for s in lowest:
-        #     print s
-        #     diff = round(s) * .96
-        #     print "Pre convert: ", diff
-        #     print "Post convert: ", int(round(diff))
-        #     temp_h.append(int(round(diff)))
-
         if not lowest:
             golfer.def_handicap = self.cur_handicap
         else:
@@ -286,60 +277,6 @@ class Round(models.Model):
     def mod_score(self):
         final = self.adj_scores
         return sum(final)
-
-    # @property
-    # def points(self):
-    #     c = Course.objects.get(name=self.course_id)
-    #     scores = [[self.hole_1, c.hole1par], [self.hole_2, c.hole2par], [self.hole_3, c.hole3par], [self.hole_4, c.hole4par],
-    #                       [self.hole_5, c.hole5par], [self.hole_6, c.hole6par], [self.hole_7, c.hole7par], [self.hole_8, c.hole8par],
-    #                       [self.hole_9, c.hole9par]]
-    #     points = 0.0
-    #
-    #     hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
-    #     for s in scores:
-    #         if s[0] - s[1] == 0:
-    #             hole_break['Par'] += 1
-    #         elif s[0] - s[1] == -1:
-    #             hole_break['Birdie'] += 1
-    #         elif s[0] - s[1] == -2:
-    #             hole_break['Eagle'] += 1
-    #         elif s[0] - s[1] == 1:
-    #             hole_break['Bogey'] += 1
-    #         else:
-    #             hole_break['Other'] += 1
-    #
-    #     points += hole_break['Par'] * .5
-    #     points += hole_break['Birdie'] * 1
-    #     points += hole_break['Eagle'] * 1
-    #
-    #     return points
-
-    # @property
-    # def mod_points(self):
-    #     c = Course.objects.get(name=self.course_id)
-    #     scores = [[self.adj_scores[0], c.hole1par], [self.adj_scores[1], c.hole2par], [self.adj_scores[2], c.hole3par],
-    #               [self.adj_scores[3], c.hole4par], [self.adj_scores[4], c.hole5par], [self.adj_scores[5], c.hole6par],
-    #               [self.adj_scores[6], c.hole7par], [self.adj_scores[7], c.hole8par], [self.adj_scores[8], c.hole9par]]
-    #     mod_points = 0.0
-    #
-    #     hole_break = {'Par': 0, 'Birdie': 0, 'Eagle': 0, 'Bogey': 0, 'Other': 0}
-    #     for s in scores:
-    #         if s[0] - s[1] == 0:
-    #             hole_break['Par'] += 1
-    #         elif s[0] - s[1] == -1:
-    #             hole_break['Birdie'] += 1
-    #         elif s[0] - s[1] <= -2:
-    #             hole_break['Eagle'] += 1
-    #         elif s[0] - s[1] == 1:
-    #             hole_break['Bogey'] += 1
-    #         else:
-    #             hole_break['Other'] += 1
-    #
-    #     mod_points += hole_break['Par'] * .5
-    #     mod_points += hole_break['Birdie'] * 1
-    #     mod_points += hole_break['Eagle'] * 1
-    #
-    #     return mod_points
 
     def __unicode__(self):
         return str(self.week_num)
