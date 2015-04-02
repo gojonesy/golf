@@ -145,6 +145,14 @@ def roster(request):
 
     return render_to_response('golf/roster.html', {'roster': roster_list, 'nums': nums},  context)
 
+def skins(request):
+    context = RequestContext(request)
+
+    weeks = Round.objects.values_list('week_num', flat=True).filter(year=datetime.now().year,).distinct().order_by('week_num')
+    for w in weeks:
+        print w
+    return render_to_response('golf/skins.html', {'weeks': weeks}, context)
+
 
 def user_login(request):
     context = RequestContext(request)
@@ -174,15 +182,6 @@ def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect('/golf/')
-
-@login_required
-def skins(request):
-    context = RequestContext(request)
-
-    weeks = Round.objects.values_list('week_num', flat=True).distinct().order_by('week_num')
-    for w in weeks:
-        print w
-    return render_to_response('golf/skins.html', {'weeks': weeks}, context)
 
 @login_required
 def add_golfer(request):

@@ -151,7 +151,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'golf',
-    'south',
     'widget_tweaks',
     'floppyforms'
 )

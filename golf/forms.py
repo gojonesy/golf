@@ -15,6 +15,7 @@ class GolferForm(forms.ModelForm):
 
     class Meta:
         model = Golfer
+        fields = '__all__'
 
 
 class CourseForm(forms.ModelForm):
@@ -42,6 +43,7 @@ class CourseForm(forms.ModelForm):
 
     class Meta:
         model = Course
+        fields = '__all__'
 
 
 class DatePicker(forms.DateInput):
@@ -79,5 +81,6 @@ class RoundForm(forms.ModelForm):
 
     class Meta:
         model = Round
+        fields = '__all__'
 
 
