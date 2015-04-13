@@ -13,6 +13,7 @@ class Golfer(models.Model):
     def_handicap = models.IntegerField(default=0)
     handicap = models.IntegerField(default=0, null=True, blank=True)
     skins = models.BooleanField(default=False)
+    isActive = models.BooleanField(default=True)
     mod_date = models.DateField(auto_now=True)
 
     def save(self):

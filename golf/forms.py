@@ -12,6 +12,7 @@ class GolferForm(forms.ModelForm):
     def_handicap = forms.IntegerField(help_text="Starting Handicap.")
     handicap = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     skins = forms.BooleanField(help_text="Skins Game?", required=False)
+    isActive = forms.BooleanField(help_text="Active?", required=False)
 
     class Meta:
         model = Golfer

@@ -93,35 +93,59 @@ def standings(request):
     return render_to_response('golf/standings.html', context)
 
 
-
-@login_required
 def rounds(request, week_num):
     context = RequestContext(request)
 
     # golfer_list = Golfer.objects.filter(skins=True)
-
-    round_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True)
+    
+    # skins1_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True)
+    # Need to put all single digit cur_handicaps into one skins game and all double digit ones in another.
+    
+    # skins1_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True).order_by('cur_handicap')
+    #halfList =  len(skins1_list) / 2
+    # print halfList
+    skins1_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True, cur_handicap__lte=9)
+    skins2_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True, cur_handicap__gte=10)
+    print len(skins1_list), len(skins2_list)
     # hole_1, hole_2, hole_3, hole_4, hole_5, hole_6, hole_7, hole_8, hole_9 = [], [], [], [], [], [], [], [], []
-    winners = ["", "", "", "", "", "", "", "", ""]
-    holes = [[], [], [], [], [], [], [], [], []]
+    winners1 = ["", "", "", "", "", "", "", "", ""]
+    holes1 = [[], [], [], [], [], [], [], [], []]
+    
+    winners2 = ["", "", "", "", "", "", "", "", ""]
+    holes2 = [[], [], [], [], [], [], [], [], []]
 
-    for s in round_list:
-        holes[0].append(s.adj_scores[0])
-        holes[1].append(s.adj_scores[1])
-        holes[2].append(s.adj_scores[2])
-        holes[3].append(s.adj_scores[3])
-        holes[4].append(s.adj_scores[4])
-        holes[5].append(s.adj_scores[5])
-        holes[6].append(s.adj_scores[6])
-        holes[7].append(s.adj_scores[7])
-        holes[8].append(s.adj_scores[8])
+    for s in skins1_list:
+        holes1[0].append(s.adj_scores[0])
+        holes1[1].append(s.adj_scores[1])
+        holes1[2].append(s.adj_scores[2])
+        holes1[3].append(s.adj_scores[3])
+        holes1[4].append(s.adj_scores[4])
+        holes1[5].append(s.adj_scores[5])
+        holes1[6].append(s.adj_scores[6])
+        holes1[7].append(s.adj_scores[7])
+        holes1[8].append(s.adj_scores[8])
+        
 
-    for i, j in enumerate(range(len(holes))):
-        if holes[i].count(min(holes[i])) == 1:
-            winners[i] = (min(holes[i]))
-            print j
-
-    return render_to_response('golf/rounds.html', {'rounds': round_list, 'week': week_num, 'winners': winners}, context)
+    for i, j in enumerate(range(len(holes1))):
+        if holes1[i].count(min(holes1[i])) == 1:
+            winners1[i] = (min(holes1[i]))
+    
+    for s in skins2_list:
+        holes2[0].append(s.adj_scores[0])
+        holes2[1].append(s.adj_scores[1])
+        holes2[2].append(s.adj_scores[2])
+        holes2[3].append(s.adj_scores[3])
+        holes2[4].append(s.adj_scores[4])
+        holes2[5].append(s.adj_scores[5])
+        holes2[6].append(s.adj_scores[6])
+        holes2[7].append(s.adj_scores[7])
+        holes2[8].append(s.adj_scores[8])
+    
+    for i, j in enumerate(range(len(holes2))):
+        if holes2[i].count(min(holes2[i])) == 1:
+            winners2[i] = (min(holes2[i]))
+    
+    return render_to_response('golf/rounds.html', {'skins1': skins1_list, 'skins2': skins2_list, 'week': week_num, 'winners1': winners1, 'winners2': winners2}, context)
 
 
 def about(request):
