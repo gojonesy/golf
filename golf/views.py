@@ -18,7 +18,7 @@ def custom_404(request):
 def index(request):
     context = RequestContext(request)
     table_dict = {}
-    golfer_list = sorted(Golfer.objects.order_by(), key=lambda a: a.adj_points, reverse=True)
+    golfer_list = sorted(Golfer.objects.filter(isActive=True).order_by(), key=lambda a: a.adj_points, reverse=True)
     cur_year = datetime.now().year
 
     nums = []
@@ -95,10 +95,6 @@ def standings(request):
 
 def rounds(request, week_num):
     context = RequestContext(request)
-
-    # golfer_list = Golfer.objects.filter(skins=True)
-    
-    # skins1_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True)
     # Need to put all single digit cur_handicaps into one skins game and all double digit ones in another.
     
     # skins1_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True).order_by('cur_handicap')
@@ -162,7 +158,7 @@ def rules(request):
 def roster(request):
     context = RequestContext(request)
 
-    roster_list = Golfer.objects.order_by('last_name')
+    roster_list = Golfer.objects.filter(isActive=True).order_by('last_name')
     nums = []
     for i in range(1, (len(roster_list) + 1)):
         nums.append(i)
