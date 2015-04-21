@@ -102,7 +102,7 @@ def rounds(request, week_num):
     # print halfList
     skins1_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True, cur_handicap__lte=9)
     skins2_list = Round.objects.filter(week_num=week_num, year=datetime.now().year, golfer_id__skins=True, golfer_id__isActive=True, cur_handicap__gte=10)
-    print len(skins1_list), len(skins2_list)
+    # print len(skins1_list), len(skins2_list)
     # hole_1, hole_2, hole_3, hole_4, hole_5, hole_6, hole_7, hole_8, hole_9 = [], [], [], [], [], [], [], [], []
     winners1 = ["", "", "", "", "", "", "", "", ""]
     holes1 = [[], [], [], [], [], [], [], [], []]
