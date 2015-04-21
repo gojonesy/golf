@@ -250,8 +250,10 @@ def add_round(request):
         # print form.year
         if form.is_valid():
 
-            dateval = form.cleaned_data['date']
-            form.cleaned_data['year'] = dateval.year
+            # dateval = form.cleaned_data['date']
+            # print dateval
+            # # form.cleaned_data['year'] = dateval.year
+            # print form.cleaned_data['year']
             form.save(commit=True)
 
             return HttpResponseRedirect('/golf/')

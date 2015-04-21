@@ -1,5 +1,6 @@
 # from django import forms
 import floppyforms as forms
+from datetime import datetime
 from golf.models import Golfer, Course, Round
 
 
@@ -68,7 +69,7 @@ class RoundForm(forms.ModelForm):
     course_id = forms.ModelChoiceField(queryset=Course.objects.all().order_by('name'), help_text="Course",
                                        empty_label="(Select a course...)")
     date = forms.DateField(widget=DatePicker, help_text="Date")
-    year = forms.IntegerField(widget=forms.HiddenInput(), initial=2014)
+    # year = forms.IntegerField(widget=forms.HiddenInput())
     week_num = forms.ChoiceField(widget=forms.Select, choices=((str(x), x) for x in range(1, 19)), help_text="Week No.")
     hole_1 = forms.IntegerField(help_text="Hole 1")
     hole_2 = forms.IntegerField(help_text="Hole 2")

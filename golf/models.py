@@ -144,11 +144,12 @@ class Round(models.Model):
         unique_together = ('week_num', 'year', 'golfer_id')
 
     def save(self):
-        year = datetime.now().year
         scores = []
         rounds = Round.objects.filter(golfer_id=self.golfer_id).order_by('week_num')
         golfer = Golfer.objects.get(pk=self.golfer_id.id)
         course = Course.objects.get(name=self.course_id)
+        self.year = self.date.year
+        print self.year
         self.cur_handicap = golfer.handicap
         self.points = 0.0
         self.mod_points = 0.0
@@ -206,7 +207,7 @@ class Round(models.Model):
         super(Round, self).save()
         scores = []
         for r in rounds:
-            if r.date.year == year:
+            if r.date.year == self.year:
                 c = Course.objects.get(name=r.course_id)
                 # Year is the same. Get the correct number of rounds
                 calc = float(r.score - c.rating)
